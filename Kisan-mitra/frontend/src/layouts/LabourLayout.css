@@ -1,0 +1,133 @@
+/* frontend/src/layouts/LabourLayout.css */
+
+:root {
+  --primary-color: #2e7d32; /* A strong green, consistent with Farmer */
+  --primary-color-light: #e8f5e9; /* A light green for hover states */
+  --primary-color-dark: #1b5e20; /* A dark green for text on hover */
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --bg-light: #f8f9fa;
+  --border-color: #e5e5e5;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-light); /* Base background for entire page */
+}
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden; /* Prevent scroll issues with fixed sidebar */
+}
+
+/* Sidebar styling - applies to the <aside> element in LabourSidebar.jsx */
+.sidebar-container {
+  width: 260px;
+  min-width: 260px; /* Ensure fixed width */
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Content Area */
+.dashboard-content {
+  margin-left: 260px; /* Space for fixed sidebar */
+  width: calc(100% - 260px);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+  /* Background gradient for the main content area only */
+  background: linear-gradient(to bottom right, var(--bg-light), #e0f2f1); /* Light gradient */
+}
+
+.dashboard-header {
+  display: none; /* Hidden by default on larger screens */
+  background: #ffffff;
+  padding: 16px 24px; /* Reduced padding slightly from 32px to 24px for consistency with common mobile pads */
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for header */
+}
+
+.menu-toggle {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  margin-right: 16px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dashboard-main {
+  padding: 24px; /* Consistent padding */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: flex-start; /* Align to top vertically */
+  width: 100%; /* Take full width of its parent */
+  box-sizing: border-box; /* Include padding in width */
+}
+.dashboard-main > * {
+  max-width: 1200px; /* Constrain content width for better readability */
+  width: 100%;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .sidebar-container {
+    transform: translateX(-100%);
+    position: absolute; /* Change to absolute for mobile overlay */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15); /* Re-add shadow for mobile overlay */
+  }
+
+  .sidebar-container.open {
+    transform: translateX(0);
+  }
+
+  .dashboard-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .dashboard-header {
+    display: flex; /* Make header visible on smaller screens */
+  }
+
+  .menu-toggle {
+    display: block; /* Make hamburger menu visible */
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-main {
+    padding: 16px; /* Reduced padding for very small screens */
+  }
+
+  .dashboard-header {
+    padding: 12px 16px; /* Further reduced padding for header */
+  }
+}

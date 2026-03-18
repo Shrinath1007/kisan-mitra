@@ -1,0 +1,22 @@
+{
+  "dashboard": "डॅशबोर्ड",
+  "crops": "माझी पिके",
+  "vacancies": "रिक्त जागा",
+  "machinery": "यंत्रसामग्री",
+  "history": "इतिहास",
+  "yourCrops": "तुमची पिके",
+  "addCrop": "पीक जोडा",
+  "noFarms": "शेती किंवा पिके उपलब्ध नाहीत.",
+  "laborVacancies": "कामगार रिक्त जागा",
+  "createVacancy": "रिक्त जागा तयार करा",
+  "bookMachinery": "यंत्रसामग्री बुक करा",
+  "bookingHistory": "बुकिंग इतिहास",
+  "aiWeatherSuggestions": "एआय आणि हवामान सूचना",
+  "loadingSuggestions": "एआय सूचना लोड करत आहे...",
+  "postVacancy": "रिक्त जागा पोस्ट करा",
+  "addCropSuccess": "पीक यशस्वीरित्या जोडले!",
+  "addCropError": "पीक जोडण्यात त्रुटी",
+  "vacancySuccess": "रिक्त जागा यशस्वीरित्या पोस्ट केली!",
+  "vacancyError": "रिक्त जागा पोस्ट करण्यात अयशस्वी",
+  "loadError": "डॅशबोर्ड डेटा लोड होऊ शकला नाही."
+}

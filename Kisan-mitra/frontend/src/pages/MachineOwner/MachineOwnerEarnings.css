@@ -1,0 +1,776 @@
+/* Enhanced Machine Owner Earnings with Agriculture Theme */
+
+:root {
+  --primary-green: #2E7D32;
+  --primary-green-light: #4CAF50;
+  --primary-green-dark: #1B5E20;
+  --accent-orange: #FF8F00;
+  --accent-brown: #5D4037;
+  --accent-yellow: #FFC107;
+  --bg-cream: #FFF8E1;
+  --bg-light-green: #F1F8E9;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #e5e5e5;
+  --shadow-light: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-medium: 0 8px 25px rgba(46, 125, 50, 0.15);
+  --shadow-heavy: 0 15px 35px rgba(46, 125, 50, 0.2);
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.earnings-container {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--bg-light-green) 0%, var(--bg-cream) 100%);
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated Background Elements */
+.earnings-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%23FFC107' opacity='0.03'%3E%3Ccircle cx='50' cy='50' r='3'/%3E%3Ccircle cx='150' cy='80' r='2'/%3E%3Ccircle cx='100' cy='120' r='2.5'/%3E%3Ccircle cx='30' cy='150' r='2'/%3E%3Ccircle cx='170' cy='40' r='3'/%3E%3C/svg%3E") repeat;
+  animation: floatCoins 25s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes floatCoins {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-200px) translateX(30px); }
+}
+
+.earnings-container::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='%234CAF50' opacity='0.05'%3E%3Cpath d='M0 80 Q50 70 100 80 Q150 70 200 80 L200 100 L0 100 Z'/%3E%3C/svg%3E") repeat-x;
+  animation: fieldWave 12s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes fieldWave {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(25px); }
+}
+
+/* Enhanced Earnings Header */
+.earnings-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 252, 248, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  border-radius: 25px;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid rgba(76, 175, 80, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: headerSlideIn 0.8s ease-out;
+}
+
+@keyframes headerSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.earnings-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-green), var(--accent-orange), var(--accent-yellow), var(--primary-green-light));
+  background-size: 400% 100%;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.earnings-header::after {
+  content: '💰';
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  font-size: 4rem;
+  opacity: 0.1;
+  animation: coinFloat 4s ease-in-out infinite;
+}
+
+@keyframes coinFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(10deg); }
+}
+
+.earnings-header h1 {
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.1); }
+}
+
+.earnings-header h1::before {
+  content: '🌾';
+  font-size: 2.5rem;
+  animation: leafSway 3s ease-in-out infinite;
+}
+
+.earnings-header h1::after {
+  content: '💵';
+  font-size: 2.5rem;
+  animation: moneyFloat 3s ease-in-out infinite 0.5s;
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes moneyFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Enhanced Summary Grid */
+.earnings-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  animation: summarySlideIn 0.8s ease-out 0.3s both;
+}
+
+@keyframes summarySlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.earnings-summary-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 252, 248, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: var(--shadow-light);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 6px solid var(--primary-green);
+  position: relative;
+  overflow: hidden;
+  animation: cardSlideIn 0.6s ease-out;
+}
+
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.earnings-summary-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(76, 175, 80, 0.05), transparent);
+  transform: rotate(-45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.earnings-summary-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-heavy);
+}
+
+.earnings-summary-card:hover::before {
+  transform: rotate(-45deg) translateX(100%);
+}
+
+.earnings-summary-card.total {
+  border-left-color: var(--primary-green);
+}
+
+.earnings-summary-card.daily {
+  border-left-color: #2196F3;
+}
+
+.earnings-summary-card.monthly {
+  border-left-color: var(--accent-orange);
+}
+
+.summary-icon {
+  font-size: 2.5rem;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.earnings-summary-card:hover .summary-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
+}
+
+.earnings-summary-card.daily .summary-icon {
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
+}
+
+.earnings-summary-card.daily:hover .summary-icon {
+  box-shadow: 0 12px 35px rgba(33, 150, 243, 0.4);
+}
+
+.earnings-summary-card.monthly .summary-icon {
+  background: linear-gradient(135deg, var(--accent-orange), #F57C00);
+  box-shadow: 0 8px 25px rgba(255, 143, 0, 0.3);
+}
+
+.earnings-summary-card.monthly:hover .summary-icon {
+  box-shadow: 0 12px 35px rgba(255, 143, 0, 0.4);
+}
+
+.summary-details {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.summary-details p {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.1rem;
+  color: var(--primary-green);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-details h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.earnings-summary-card:hover .summary-details h2 {
+  color: var(--primary-green);
+  transform: scale(1.05);
+}
+
+.summary-details small {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Enhanced Breakdown Section */
+.earnings-breakdown {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 252, 248, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid rgba(76, 175, 80, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: breakdownSlideIn 0.8s ease-out 0.5s both;
+}
+
+@keyframes breakdownSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.earnings-breakdown::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-green), var(--accent-orange), var(--primary-green-light));
+}
+
+.earnings-breakdown h3 {
+  margin: 0 0 2rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.earnings-breakdown h3::before {
+  content: '💡';
+  font-size: 1.4rem;
+}
+
+.breakdown-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  border-left: 5px solid #E0E0E0;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.breakdown-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+}
+
+.breakdown-item.highlight {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(255, 193, 7, 0.1));
+  border-left-color: var(--primary-green);
+  font-weight: 700;
+}
+
+.breakdown-item.highlight:hover {
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+}
+
+.breakdown-label {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.breakdown-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.breakdown-value.positive {
+  color: var(--primary-green);
+}
+
+.breakdown-value.negative {
+  color: #E53E3E;
+}
+
+.breakdown-value.highlight {
+  color: var(--primary-green);
+  font-size: 1.3rem;
+}
+
+/* Enhanced Table Wrapper */
+.table-wrapper {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 252, 248, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid rgba(76, 175, 80, 0.1);
+  animation: tableSlideIn 0.8s ease-out 0.7s both;
+}
+
+@keyframes tableSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table-wrapper h3 {
+  margin: 0 0 2rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.table-wrapper h3::before {
+  content: '📋';
+  font-size: 1.4rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+}
+
+.earnings-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.earnings-table thead {
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+  color: white;
+}
+
+.earnings-table th {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.earnings-table td {
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid rgba(76, 175, 80, 0.1);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.earnings-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.earnings-table tbody tr:hover {
+  background: rgba(76, 175, 80, 0.05);
+  transform: scale(1.01);
+}
+
+.booking-id {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  color: var(--primary-green);
+  background: rgba(76, 175, 80, 0.1);
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.machine-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.farmer-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.gross-amount {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.net-amount {
+  font-weight: 800;
+  color: var(--primary-green);
+  font-size: 1.1rem;
+}
+
+/* Enhanced No Earnings State */
+.no-earnings {
+  text-align: center;
+  padding: 5rem 2rem;
+  position: relative;
+}
+
+.empty-state-icon {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  opacity: 0.3;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.no-earnings h3 {
+  color: var(--primary-green);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.no-earnings p {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Enhanced Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 252, 248, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.loading-spinner {
+  border: 4px solid rgba(76, 175, 80, 0.1);
+  border-top: 4px solid var(--primary-green);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container h2 {
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Enhanced Error State */
+.error-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 252, 248, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+.error-message {
+  color: #E53E3E;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.retry-btn {
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-light);
+}
+
+.retry-btn:hover {
+  background: linear-gradient(135deg, var(--primary-green-light), var(--accent-orange));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+  .earnings-container {
+    padding: 1rem;
+  }
+  
+  .earnings-header {
+    padding: 2rem;
+  }
+  
+  .earnings-header h1 {
+    font-size: 2.2rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .earnings-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .earnings-summary-card {
+    padding: 2rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .summary-details h2 {
+    font-size: 2rem;
+  }
+  
+  .table-wrapper {
+    padding: 2rem;
+  }
+  
+  .earnings-table {
+    font-size: 0.9rem;
+  }
+  
+  .earnings-table th,
+  .earnings-table td {
+    padding: 1rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .earnings-container {
+    padding: 0.5rem;
+  }
+  
+  .earnings-header {
+    padding: 1.5rem;
+  }
+  
+  .earnings-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .earnings-summary-card {
+    padding: 1.5rem;
+  }
+  
+  .summary-details h2 {
+    font-size: 1.8rem;
+  }
+  
+  .table-wrapper {
+    padding: 1.5rem;
+  }
+  
+  .earnings-table th,
+  .earnings-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .breakdown-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
+/* Accessibility Enhancements */
+.retry-btn:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .earnings-container::before,
+  .earnings-container::after,
+  .earnings-header::after {
+    display: none;
+  }
+  
+  .earnings-container {
+    background: white;
+  }
+  
+  .earnings-header,
+  .earnings-summary-card,
+  .earnings-breakdown,
+  .table-wrapper {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .retry-btn {
+    display: none;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.3s ease;
+}

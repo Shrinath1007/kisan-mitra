@@ -1,0 +1,64 @@
+/* src/components/Farmer/Weather.css */
+.weather-widget {
+    background: linear-gradient(135deg, #ffffff, #f0f7ff);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+}
+
+.weather-widget h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.daily-forecasts {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.day-forecast {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.day-forecast:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.day-forecast .day {
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.day-forecast .weather-code {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.day-forecast .temp-max {
+    font-weight: bold;
+    color: #d9534f;
+}
+
+.day-forecast .temp-min {
+    color: #5bc0de;
+}
+
+.weather-widget.loading,
+.weather-widget.error,
+.weather-widget.empty {
+    text-align: center;
+    color: #777;
+    padding: 40px 20px;
+}

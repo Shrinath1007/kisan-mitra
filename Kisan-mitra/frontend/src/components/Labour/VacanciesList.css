@@ -1,0 +1,191 @@
+.vacancies-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.vacancy-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Expiration Status Styling */
+.vacancy-card.expired {
+    border-left-color: #f44336;
+    background: #fafafa;
+    opacity: 0.8;
+}
+
+.vacancy-card.expiring-soon {
+    border-left-color: #ff9800;
+    background: #fff8e1;
+}
+
+.vacancy-card.expiring-warning {
+    border-left-color: #ffc107;
+    background: #fffde7;
+}
+
+.vacancy-card.active {
+    border-left-color: #4CAF50;
+}
+
+.vacancy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.expiration-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.expiration-badge.expired {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #f44336;
+}
+
+.expiration-badge.expiring-soon {
+    background: #fff3e0;
+    color: #e65100;
+    border: 1px solid #ff9800;
+    animation: pulse 2s infinite;
+}
+
+.expiration-badge.expiring-warning {
+    background: #fffde7;
+    color: #f57f17;
+    border: 1px solid #ffc107;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.vacancy-details p {
+    margin: 5px 0;
+}
+
+.expiration-info {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.expiration-info.expired {
+    background: #ffebee;
+    color: #c62828;
+    border-left: 3px solid #f44336;
+}
+
+.expiration-info.expiring-soon {
+    background: #fff3e0;
+    color: #e65100;
+    border-left: 3px solid #ff9800;
+}
+
+.expiration-info.expiring-warning {
+    background: #fffde7;
+    color: #f57f17;
+    border-left: 3px solid #ffc107;
+}
+
+.expiration-info.active {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border-left: 3px solid #4CAF50;
+}
+
+/* Button Styling */
+.apply-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.apply-btn:hover:not(:disabled) {
+    background: #45a049;
+}
+
+.applied-btn {
+    background: #777;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: not-allowed;
+}
+
+.full-btn {
+    background: #f44336;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: not-allowed;
+}
+
+.expired-btn {
+    background: #9e9e9e;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.vacancy-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.no-vacancies {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 2px dashed #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vacancy-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .expiration-badge {
+        align-self: flex-end;
+    }
+    
+    .vacancy-actions {
+        flex-direction: column;
+    }
+    
+    .apply-btn, .applied-btn, .full-btn, .expired-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

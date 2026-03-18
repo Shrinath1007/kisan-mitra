@@ -1,0 +1,22 @@
+{
+  "dashboard": "डैशबोर्ड",
+  "crops": "मेरी फसलें",
+  "vacancies": "रिक्तियां",
+  "machinery": "मशीनरी",
+  "history": "इतिहास",
+  "yourCrops": "आपकी फसलें",
+  "addCrop": "फसल जोड़ें",
+  "noFarms": "कोई खेत या फसल उपलब्ध नहीं है।",
+  "laborVacancies": "श्रम रिक्तियां",
+  "createVacancy": "रिक्ति बनाएं",
+  "bookMachinery": "मशीनरी बुक करें",
+  "bookingHistory": "बुकिंग इतिहास",
+  "aiWeatherSuggestions": "एआई और मौसम सुझाव",
+  "loadingSuggestions": "एआई सुझाव लोड हो रहे हैं...",
+  "postVacancy": "एक रिक्ति पोस्ट करें",
+  "addCropSuccess": "फसल सफलतापूर्वक जोड़ी गई!",
+  "addCropError": "फसल जोड़ने में त्रुटि",
+  "vacancySuccess": "रिक्ति सफलतापूर्वक पोस्ट की गई!",
+  "vacancyError": "रिक्ति पोस्ट करने में विफल",
+  "loadError": "डैशबोर्ड डेटा लोड नहीं हो सका।"
+}

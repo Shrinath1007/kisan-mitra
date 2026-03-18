@@ -1,0 +1,98 @@
+.ai-recommendation {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  font-size: 15px;
+}
+
+.ai-weather-section,
+.ai-tasks-section {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.ai-recommendation h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e3a2a;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.weather-summary {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #555;
+  font-style: italic;
+}
+
+.weather-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.weather-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.weather-detail span {
+  color: #666;
+}
+
+.weather-detail strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.task-icon {
+  font-size: 20px;
+}
+
+.task-description {
+  flex-grow: 1;
+  margin: 0;
+  color: #444;
+}
+
+.task-priority {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 20px;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.ai-recommendation-placeholder {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+}

@@ -1,0 +1,1662 @@
+/* src/pages/Auth/Login.css */
+
+:root {
+    --primary-green: #4CAF50;
+    --dark-green: #388E3C;
+    --text-dark: #2E2E2E;
+    --text-light: #666666;
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1B5E20 0%, #4CAF50 50%, #A5D6A7 100%);
+    padding: 2rem 1rem;
+}
+
+
+/* Enhanced farming-themed background animations */
+.login-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Animated tractor moving across the field */
+.login-background::before {
+    content: '';
+    position: absolute;
+    bottom: 15%;
+    left: -200px;
+    width: 120px;
+    height: 60px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' fill='%23FF6B35'%3E%3C!-- Tractor body --%3E%3Crect x='30' y='20' width='60' height='25' rx='5' fill='%23FF6B35'/%3E%3C!-- Cabin --%3E%3Crect x='70' y='10' width='20' height='20' rx='3' fill='%23E55A2B'/%3E%3C!-- Front wheel --%3E%3Ccircle cx='20' cy='45' r='12' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3C!-- Rear wheel --%3E%3Ccircle cx='100' cy='45' r='15' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3C!-- Wheel spokes --%3E%3Cline x1='20' y1='33' x2='20' y2='57' stroke='%23888' stroke-width='1'/%3E%3Cline x1='8' y1='45' x2='32' y2='45' stroke='%23888' stroke-width='1'/%3E%3Cline x1='100' y1='30' x2='100' y2='60' stroke='%23888' stroke-width='1'/%3E%3Cline x1='85' y1='45' x2='115' y2='45' stroke='%23888' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: tractorMove 25s linear infinite;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+/* Animated harvester cutting rice */
+.login-background::after {
+    content: '';
+    position: absolute;
+    bottom: 25%;
+    right: -180px;
+    width: 140px;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 80' fill='%23FFA726'%3E%3C!-- Harvester body --%3E%3Crect x='20' y='25' width='80' height='35' rx='8' fill='%23FFA726'/%3E%3C!-- Cabin --%3E%3Crect x='85' y='15' width='25' height='25' rx='5' fill='%23FF9800'/%3E%3C!-- Cutting header --%3E%3Crect x='5' y='35' width='20' height='15' rx='3' fill='%23E65100'/%3E%3C!-- Wheels --%3E%3Ccircle cx='35' cy='65' r='12' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3Ccircle cx='85' cy='65' r='12' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3C!-- Grain tank --%3E%3Crect x='45' y='20' width='30' height='20' rx='5' fill='%23FFB74D'/%3E%3C!-- Cutting blades --%3E%3Cpath d='M5 45 L15 40 L25 45 L15 50 Z' fill='%23B71C1C'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: harvesterMove 30s linear infinite 10s;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+@keyframes tractorMove {
+    0% { 
+        left: -200px; 
+        transform: scaleX(1);
+    }
+    45% { 
+        left: calc(100% - 100px); 
+        transform: scaleX(1);
+    }
+    50% { 
+        left: calc(100% - 100px); 
+        transform: scaleX(-1);
+    }
+    95% { 
+        left: -200px; 
+        transform: scaleX(-1);
+    }
+    100% { 
+        left: -200px; 
+        transform: scaleX(1);
+    }
+}
+
+@keyframes harvesterMove {
+    0% { 
+        right: -180px; 
+        transform: scaleX(-1);
+    }
+    40% { 
+        right: calc(100% - 120px); 
+        transform: scaleX(-1);
+    }
+    45% { 
+        right: calc(100% - 120px); 
+        transform: scaleX(1);
+    }
+    90% { 
+        right: -180px; 
+        transform: scaleX(1);
+    }
+    100% { 
+        right: -180px; 
+        transform: scaleX(-1);
+    }
+}
+
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.layer-1 {
+    background: 
+        /* Animated rice field with swaying motion */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='%23A5D6A7' opacity='0.3'%3E%3Cpath d='M10 80 Q15 70 20 80 Q25 70 30 80 Q35 70 40 80 Q45 70 50 80 Q55 70 60 80 Q65 70 70 80 Q75 70 80 80 Q85 70 90 80 Q95 70 100 80 Q105 70 110 80 Q115 70 120 80 Q125 70 130 80 Q135 70 140 80 Q145 70 150 80 Q155 70 160 80 Q165 70 170 80 Q175 70 180 80 Q185 70 190 80'/%3E%3C/svg%3E"),
+        radial-gradient(circle at 20% 80%, rgba(165, 214, 167, 0.3) 0%, transparent 50%), 
+        radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.2) 0%, transparent 50%);
+    animation: riceFieldSway 12s ease-in-out infinite, float 20s ease-in-out infinite;
+}
+
+@keyframes riceFieldSway {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    50% { transform: translateX(8px) rotate(0.5deg); }
+}
+
+.layer-2 {
+    background: 
+        /* Farm landscape with buildings and hills */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200' fill='%234CAF50' opacity='0.15'%3E%3Cpath d='M0 150 Q50 140 100 150 Q150 140 200 150 Q250 140 300 150 Q350 140 400 150 L400 200 L0 200 Z'/%3E%3C!-- Farm buildings --%3E%3Crect x='80' y='120' width='30' height='30' fill='%23795548'/%3E%3Cpath d='M80 120 L95 105 L110 120 Z' fill='%23D32F2F'/%3E%3Crect x='200' y='125' width='25' height='25' fill='%23795548'/%3E%3Cpath d='M200 125 L212.5 110 L225 125 Z' fill='%23D32F2F'/%3E%3C!-- Windmill --%3E%3Crect x='320' y='100' width='4' height='50' fill='%23795548'/%3E%3Cpath d='M322 105 L315 95 L329 95 L335 105 L329 115 L315 115 Z' fill='%23FFFFFF' opacity='0.8'/%3E%3C/svg%3E"),
+        radial-gradient(circle at 60% 40%, rgba(46, 125, 50, 0.15) 0%, transparent 50%);
+    animation: landscapeMove 35s linear infinite, float 25s ease-in-out infinite reverse;
+}
+
+@keyframes landscapeMove {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
+
+.layer-3 {
+    background: 
+        /* Floating farm tools and equipment */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' fill='%23FFFFFF' opacity='0.12'%3E%3C!-- Plow --%3E%3Cpath d='M50 60 L70 50 L80 60 L75 80 L55 80 Z' fill='%23795548'/%3E%3C!-- Sickle --%3E%3Cpath d='M150 70 Q160 60 170 70 Q165 80 150 75 Z' fill='%23FFD54F'/%3E%3Cline x1='150' y1='75' x2='145' y2='90' stroke='%23795548' stroke-width='3'/%3E%3C!-- Water pump --%3E%3Crect x='240' y='65' width='20' height='15' rx='3' fill='%234CAF50'/%3E%3Ccircle cx='250' cy='72' r='8' fill='%23388E3C'/%3E%3Cpath d='M258 72 L270 65 L270 79 Z' fill='%232E7D32'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%234CAF50' opacity='0.08'%3E%3Cpath d='M10 40 L30 20 L50 40 L70 20 L90 40 L90 50 L10 50 Z'/%3E%3C/svg%3E") repeat;
+    animation: toolsFloat 40s ease-in-out infinite, float 30s ease-in-out infinite;
+}
+
+@keyframes toolsFloat {
+    0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+    25% { transform: translateY(-12px) translateX(8px) rotate(1deg); }
+    50% { transform: translateY(-5px) translateX(-5px) rotate(-0.5deg); }
+    75% { transform: translateY(-15px) translateX(12px) rotate(1.5deg); }
+}
+
+
+/* Enhanced Animated Farmer Character */
+.animated-character {
+    position: absolute;
+    bottom: 12%;
+    left: 8%;
+    z-index: 2;
+}
+
+.character-body {
+    position: relative;
+    width: 90px;
+    height: 130px;
+    animation: farmerWork 6s ease-in-out infinite;
+}
+
+.character-body .head {
+    position: absolute;
+    top: 0;
+    left: 28px;
+    width: 34px;
+    height: 34px;
+    background: #8D6E63;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Farmer hat */
+.character-body .head::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -5px;
+    width: 44px;
+    height: 20px;
+    background: #795548;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.character-body .body {
+    position: absolute;
+    top: 34px;
+    left: 22px;
+    width: 46px;
+    height: 55px;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    border-radius: 23px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Farmer overalls */
+.character-body .body::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    width: 30px;
+    height: 45px;
+    background: #2E7D32;
+    border-radius: 15px;
+    opacity: 0.7;
+}
+
+.character-body .arm {
+    position: absolute;
+    width: 14px;
+    height: 45px;
+    background: linear-gradient(135deg, #8D6E63, #6D4C41);
+    border-radius: 7px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.character-body .arm.left {
+    top: 38px;
+    left: 6px;
+    animation: leftArmWork 3s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.character-body .arm.right {
+    top: 38px;
+    right: 6px;
+    animation: rightArmWork 3s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+/* Enhanced farming tool (hoe) */
+.character-body .tool {
+    position: absolute;
+    top: 70px;
+    right: -15px;
+    width: 35px;
+    height: 6px;
+    background: linear-gradient(90deg, #795548, #5D4037);
+    border-radius: 3px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Tool blade */
+.character-body .tool::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    width: 15px;
+    height: 20px;
+    background: linear-gradient(135deg, #607D8B, #455A64);
+    border-radius: 2px;
+    transform: rotate(-10deg);
+}
+
+/* Legs */
+.character-body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    width: 40px;
+    height: 35px;
+    background: linear-gradient(135deg, #3E2723, #2E2E2E);
+    border-radius: 20px 20px 8px 8px;
+}
+
+@keyframes farmerWork {
+    0%, 100% { 
+        transform: translateX(0) translateY(0) rotate(0deg); 
+    }
+    25% { 
+        transform: translateX(8px) translateY(-3px) rotate(1deg); 
+    }
+    50% { 
+        transform: translateX(15px) translateY(0) rotate(0deg); 
+    }
+    75% { 
+        transform: translateX(8px) translateY(3px) rotate(-1deg); 
+    }
+}
+
+@keyframes leftArmWork {
+    0%, 100% { 
+        transform: rotate(-20deg); 
+    }
+    50% { 
+        transform: rotate(25deg); 
+    }
+}
+
+@keyframes rightArmWork {
+    0%, 100% { 
+        transform: rotate(20deg); 
+    }
+    50% { 
+        transform: rotate(-25deg); 
+    }
+}
+
+
+/* Floating Elements */
+
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 2;
+}
+
+.element-1 {
+    top: 20%;
+    left: 5%;
+    width: 60px;
+    height: 60px;
+}
+
+.element-2 {
+    top: 60%;
+    right: 10%;
+    width: 60px;
+    height: 60px;
+}
+
+.element-3 {
+    bottom: 20%;
+    right: 15%;
+    width: 60px;
+    height: 60px;
+}
+
+.floating-element svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+
+/* Main Content Layout */
+
+.login-content {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* Branding Section */
+
+.login-branding {
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.logo-icon {
+    width: 3rem !important;
+    height: 3rem !important;
+    color: var(--primary-green) !important;
+}
+
+.brand-logo h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.brand-tagline h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.brand-tagline p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.feature-text h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.feature-text p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+
+/* Form Section */
+
+.login-form-container {
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0 0 0.5rem 0;
+}
+
+.form-header p {
+    color: var(--text-light);
+    margin: 0;
+}
+
+
+/* Error Message */
+
+.auth-error-message {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(244, 67, 54, 0.1);
+    border: 1px solid rgba(244, 67, 54, 0.2);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    color: #D32F2F;
+    font-weight: 500;
+}
+
+.error-icon {
+    font-size: 1.2rem;
+}
+
+
+/* Form Styles */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group.active .input-container {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.input-container:focus-within {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.input-icon {
+    padding: 0 1rem;
+    color: var(--text-light) !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+}
+
+.form-input {
+    flex: 1;
+    padding: 1rem 1rem 1rem 0;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-dark);
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+.password-toggle {
+    padding: 0 1rem;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: var(--primary-green);
+}
+
+.password-toggle svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+}
+
+
+/* Form Options */
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.remember-me input {
+    display: none;
+}
+
+.checkmark {
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 1px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.remember-me input:checked+.checkmark {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.remember-me input:checked+.checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.375rem;
+    font-weight: bold;
+}
+
+.forgot-password {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--dark-green);
+}
+
+
+/* Login Button */
+
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-button:hover:not(:disabled) {
+    background: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+.login-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.login-button.loading {
+    pointer-events: none;
+}
+
+.button-spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+
+/* Divider */
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.divider span {
+    padding: 0 1rem;
+}
+
+
+/* Social Login */
+
+.social-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    border-radius: 8px;
+    background: white;
+    color: var(--text-dark);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-button:hover {
+    border-color: var(--primary-green);
+    transform: translateY(-1px);
+}
+
+.social-button.google:hover {
+    border-color: #DB4437;
+}
+
+.social-button.facebook:hover {
+    border-color: #4267B2;
+}
+
+.social-button svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+}
+
+
+/* Auth Footer */
+
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-light);
+}
+
+.auth-link {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+    color: var(--dark-green);
+}
+
+
+/* Enhanced Background Decorations with farming animations */
+.background-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Animated sun with rays */
+.background-decorations::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: 8%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255, 235, 59, 0.8) 0%, rgba(255, 235, 59, 0.4) 40%, transparent 70%);
+    border-radius: 50%;
+    animation: sunPulse 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Sun rays */
+.background-decorations::after {
+    content: '';
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    width: 88px;
+    height: 88px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 88' fill='none'%3E%3Cg stroke='%23FFEB3B' stroke-width='2' opacity='0.6'%3E%3Cline x1='44' y1='4' x2='44' y2='12'/%3E%3Cline x1='44' y1='76' x2='44' y2='84'/%3E%3Cline x1='4' y1='44' x2='12' y2='44'/%3E%3Cline x1='76' y1='44' x2='84' y2='44'/%3E%3Cline x1='17.17' y1='17.17' x2='22.83' y2='22.83'/%3E%3Cline x1='65.17' y1='65.17' x2='70.83' y2='70.83'/%3E%3Cline x1='17.17' y1='70.83' x2='22.83' y2='65.17'/%3E%3Cline x1='65.17' y1='22.83' x2='70.83' y2='17.17'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: sunRotate 25s linear infinite;
+    z-index: 1;
+}
+
+@keyframes sunPulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes sunRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Flying birds */
+.decoration.bird-1 {
+    top: 15%;
+    left: -80px;
+    width: 60px;
+    height: 30px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' fill='%23FFFFFF' opacity='0.7'%3E%3Cpath d='M5 15 Q15 8 25 15 Q35 8 45 15 M8 18 Q18 11 28 18 Q38 11 48 18'/%3E%3C/svg%3E") no-repeat;
+    animation: birdsfly 18s linear infinite;
+}
+
+.decoration.bird-2 {
+    top: 25%;
+    left: -100px;
+    width: 80px;
+    height: 40px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40' fill='%23FFFFFF' opacity='0.5'%3E%3Cpath d='M10 20 Q20 10 30 20 Q40 10 50 20 M15 25 Q25 15 35 25 Q45 15 55 25 M20 30 Q30 20 40 30'/%3E%3C/svg%3E") no-repeat;
+    animation: birdsfly 22s linear infinite 8s;
+}
+
+@keyframes birdsfly {
+    0% { 
+        left: -100px; 
+        transform: translateY(0px);
+    }
+    25% { 
+        transform: translateY(-8px);
+    }
+    50% { 
+        transform: translateY(4px);
+    }
+    75% { 
+        transform: translateY(-6px);
+    }
+    100% { 
+        left: calc(100% + 100px); 
+        transform: translateY(0px);
+    }
+}
+
+/* Animated clouds */
+.decoration.cloud-1 {
+    top: 12%;
+    left: -150px;
+    width: 120px;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' fill='%23FFFFFF' opacity='0.4'%3E%3Cpath d='M20 40 Q15 30 25 25 Q35 15 50 25 Q65 15 80 25 Q95 20 100 35 Q95 45 85 40 Q70 50 55 40 Q40 50 20 40 Z'/%3E%3C/svg%3E") no-repeat;
+    animation: cloudsMove 28s linear infinite;
+}
+
+.decoration.cloud-2 {
+    top: 20%;
+    left: -180px;
+    width: 100px;
+    height: 50px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50' fill='%23FFFFFF' opacity='0.3'%3E%3Cpath d='M15 35 Q10 25 20 20 Q30 10 45 20 Q60 10 75 20 Q90 15 95 30 Q90 40 80 35 Q65 45 50 35 Q35 45 15 35 Z'/%3E%3C/svg%3E") no-repeat;
+    animation: cloudsMove 35s linear infinite 12s;
+}
+
+@keyframes cloudsMove {
+    0% { 
+        left: -200px; 
+        transform: translateY(0px);
+    }
+    25% { 
+        transform: translateY(-3px);
+    }
+    50% { 
+        transform: translateY(2px);
+    }
+    75% { 
+        transform: translateY(-2px);
+    }
+    100% { 
+        left: calc(100% + 200px); 
+        transform: translateY(0px);
+    }
+}
+
+/* Enhanced existing decorations */
+.decoration {
+    position: absolute;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A5D6A7' opacity='0.1'%3E%3Cpath d='M17 8C8 10 5.9 16.2 5.9 16.2C5.9 16.2 8.3 10.5 17 8Z'/%3E%3C/svg%3E") no-repeat;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Wheat stalks swaying */
+.decoration.wheat-1 {
+    top: 60%;
+    left: 5%;
+    width: 40px;
+    height: 80px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80' fill='%23FFC107' opacity='0.6'%3E%3Cpath d='M20 75 L20 15 M15 20 L25 20 M13 25 L27 25 M15 30 L25 30 M17 35 L23 35 M18 40 L22 40'/%3E%3C/svg%3E") no-repeat;
+    animation: wheatSway 8s ease-in-out infinite;
+}
+
+.decoration.wheat-2 {
+    top: 65%;
+    right: 8%;
+    width: 35px;
+    height: 70px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 70' fill='%23FFC107' opacity='0.5'%3E%3Cpath d='M17.5 65 L17.5 15 M13 18 L22 18 M11 23 L24 23 M13 28 L22 28 M15 33 L20 33'/%3E%3C/svg%3E") no-repeat;
+    animation: wheatSway 10s ease-in-out infinite 3s;
+}
+
+@keyframes wheatSway {
+    0%, 100% { transform: rotate(0deg) translateX(0px); }
+    25% { transform: rotate(2deg) translateX(3px); }
+    50% { transform: rotate(0deg) translateX(0px); }
+    75% { transform: rotate(-2deg) translateX(-3px); }
+}
+
+.leaf-1 {
+    top: 10%;
+    right: 5%;
+    width: 4rem;
+    height: 4rem;
+    animation-delay: 0s;
+}
+
+.leaf-2 {
+    top: 70%;
+    left: 8%;
+    width: 3rem;
+    height: 3rem;
+    animation-delay: 2s;
+}
+
+.leaf-3 {
+    bottom: 15%;
+    right: 20%;
+    width: 5rem;
+    height: 5rem;
+    animation-delay: 4s;
+}
+
+.grain-1,
+.grain-2 {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234CAF50' opacity='0.05'%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3C/svg%3E") repeat;
+    width: 100px;
+    height: 100px;
+}
+
+.grain-1 {
+    top: 30%;
+    left: 5%;
+    animation-delay: 1s;
+}
+
+.grain-2 {
+    bottom: 30%;
+    right: 8%;
+    animation-delay: 3s;
+}
+
+
+/* Enhanced Animations */
+@keyframes walk {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(10px) translateY(-5px);
+    }
+    50% {
+        transform: translateX(20px) translateY(0);
+    }
+    75% {
+        transform: translateX(10px) translateY(5px);
+    }
+}
+
+@keyframes armSwing {
+    0%, 100% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Particle effects for enhanced atmosphere */
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* Floating seeds/pollen */
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 235, 59, 0.4), transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(255, 235, 59, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 235, 59, 0.5), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255, 235, 59, 0.3), transparent),
+        radial-gradient(1px 1px at 160px 30px, rgba(255, 235, 59, 0.4), transparent);
+    background-repeat: repeat;
+    background-size: 180px 120px;
+    animation: floatingSeeds 30s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+@keyframes floatingSeeds {
+    0% { 
+        transform: translateY(0px) translateX(0px); 
+        background-position: 0 0;
+    }
+    100% { 
+        transform: translateY(-120px) translateX(20px); 
+        background-position: -180px -120px;
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .login-content {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+    .login-branding {
+        padding: 2rem;
+        text-align: center;
+    }
+    .brand-logo {
+        justify-content: center;
+    }
+    .animated-character {
+        bottom: 8%;
+        left: 5%;
+        transform: scale(0.8);
+    }
+    
+    /* Reduce animation complexity on tablets */
+    .login-background::before,
+    .login-background::after {
+        animation-duration: 35s;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1rem;
+    }
+    .login-content {
+        margin: 1rem;
+    }
+    .login-branding,
+    .login-form-container {
+        padding: 2rem 1.5rem;
+    }
+    .brand-logo h1 {
+        font-size: 2rem;
+    }
+    .brand-tagline h2 {
+        font-size: 1.5rem;
+    }
+    .social-login {
+        grid-template-columns: 1fr;
+    }
+    .floating-element {
+        display: none;
+    }
+    
+    /* Optimize animations for mobile */
+    .animated-character {
+        display: none;
+    }
+    
+    .login-background::before {
+        width: 80px;
+        height: 40px;
+        animation-duration: 40s;
+    }
+    
+    .login-background::after {
+        width: 100px;
+        height: 60px;
+        animation-duration: 45s;
+    }
+    
+    .background-decorations::before,
+    .background-decorations::after {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .decoration.bird-1,
+    .decoration.bird-2 {
+        display: none;
+    }
+    
+    .decoration.cloud-1,
+    .decoration.cloud-2 {
+        animation-duration: 40s;
+    }
+    
+    /* Simplify particle effects */
+    .login-container::before {
+        animation-duration: 45s;
+        opacity: 0.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-branding,
+    .login-form-container {
+        padding: 1.5rem 1rem;
+    }
+    .form-header h2 {
+        font-size: 1.75rem;
+    }
+    .form-options {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    .features-list {
+        gap: 1rem;
+    }
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    /* Minimal animations for small screens */
+    .decoration.wheat-1,
+    .decoration.wheat-2 {
+        display: none;
+    }
+    
+    .layer-1,
+    .layer-2,
+    .layer-3 {
+        animation-duration: 50s;
+    }
+    
+    /* Disable complex animations on very small screens */
+    .login-container::before {
+        display: none;
+    }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .login-background::before,
+    .login-background::after,
+    .background-decorations::before,
+    .background-decorations::after,
+    .decoration,
+    .animated-character,
+    .login-container::before {
+        animation: none !important;
+    }
+    
+    .parallax-layer {
+        transform: none !important;
+    }
+    
+    .floating-element {
+        transform: none !important;
+    }
+}
+/* Forgot Password Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.forgot-modal {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-header h3 {
+  color: #2E7D32;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  background: #4CAF50;
+  color: white;
+  transform: scale(1.1);
+}
+
+.modal-error {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  color: #d32f2f;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.modal-success {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  color: #2E7D32;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.modal-form {
+  width: 100%;
+}
+
+.modal-step-content {
+  text-align: center;
+}
+
+.modal-step-content h4 {
+  color: #2E7D32;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.modal-step-content p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.modal-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.modal-input-icon {
+  position: absolute;
+  left: 1rem;
+  color: #4CAF50;
+  z-index: 2;
+}
+
+.modal-form-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.modal-form-input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  background: white;
+}
+
+.modal-form-input.otp-input {
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-size: 1.2rem;
+}
+
+.modal-password-toggle {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: color 0.3s ease;
+}
+
+.modal-password-toggle:hover {
+  color: #4CAF50;
+}
+
+.modal-submit-button {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.modal-submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #45a049, #388e3c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+}
+
+.modal-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.modal-submit-button.loading {
+  opacity: 0.8;
+}
+
+.modal-resend-section {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.resend-timer {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.resend-button {
+  background: none;
+  border: none;
+  color: #4CAF50;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.resend-button:hover {
+  color: #45a049;
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #4CAF50;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #45a049;
+  text-decoration: underline;
+}
+
+/* Button Spinner */
+.button-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .forgot-modal {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .modal-step-content h4 {
+    font-size: 1.1rem;
+  }
+  
+  .step-indicator {
+    gap: 0.75rem;
+  }
+  
+  .step {
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .forgot-modal {
+    padding: 1rem;
+  }
+  
+  .modal-form-input {
+    padding: 0.625rem 0.75rem 0.625rem 2.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .modal-input-icon {
+    left: 0.75rem;
+  }
+  
+  .modal-submit-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Admin Login Modal Styles */
+.admin-modal {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+  border: 2px solid #FF6B35;
+}
+
+.admin-modal .modal-header h3 {
+  color: #FF6B35;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.admin-modal .modal-step-content h4 {
+  color: #FF6B35;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.admin-modal .modal-input-icon {
+  color: #FF6B35;
+}
+
+.admin-modal .modal-form-input:focus {
+  border-color: #FF6B35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.admin-modal .modal-password-toggle:hover {
+  color: #FF6B35;
+}
+
+/* Admin Button Styling */
+.admin-button {
+  background: linear-gradient(135deg, #FF6B35, #E55A2B) !important;
+  margin-top: 0.5rem;
+}
+
+.admin-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #E55A2B, #CC4A1F) !important;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+/* Admin Submit Button */
+.admin-submit {
+  background: linear-gradient(135deg, #FF6B35, #E55A2B) !important;
+}
+
+.admin-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #E55A2B, #CC4A1F) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+}
+
+/* Admin Info Section */
+.admin-info {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 107, 53, 0.1);
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.admin-info p {
+  margin: 0;
+  color: #CC4A1F;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Responsive Design for Admin Modal */
+@media (max-width: 768px) {
+  .admin-modal {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .admin-modal .modal-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .admin-modal .modal-step-content h4 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-modal {
+    padding: 1rem;
+  }
+  
+  .admin-modal .modal-form-input {
+    padding: 0.625rem 0.75rem 0.625rem 2.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .admin-modal .modal-input-icon {
+    left: 0.75rem;
+  }
+  
+  .admin-modal .modal-submit-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}

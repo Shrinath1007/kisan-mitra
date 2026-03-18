@@ -1,0 +1,1690 @@
+/* -------------- MAIN DASHBOARD WRAPPER WITH ENHANCED FARMING THEME -------------- */
+
+.farmer-dashboard {
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+    background: linear-gradient(135deg, 
+        #F1F8E9 0%, 
+        #E8F5E9 25%, 
+        #F3E5F5 50%, 
+        #E8F5E9 75%, 
+        #F1F8E9 100%
+    );
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: dashboardFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes dashboardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.farmer-dashboard.page-loaded .stats-grid .stat-card,
+.farmer-dashboard.page-loaded .dashboard-section {
+    animation: slideUpFadeIn 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes slideUpFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Loading Animation */
+.farmer-dashboard.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+    animation: none;
+    opacity: 1;
+    transform: none;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.loading-tractor {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 20px;
+    animation: tractorBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes tractorBounce {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+.loading-text h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2E7D32;
+}
+
+.loading-text p {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+    opacity: 0.8;
+}
+
+/* Animated farming background */
+.farmer-dashboard::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Animated rice field pattern */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='%23A5D6A7' opacity='0.1'%3E%3Cpath d='M10 80 Q15 70 20 80 Q25 70 30 80 Q35 70 40 80 Q45 70 50 80 Q55 70 60 80 Q65 70 70 80 Q75 70 80 80 Q85 70 90 80 Q95 70 100 80 Q105 70 110 80 Q115 70 120 80 Q125 70 130 80 Q135 70 140 80 Q145 70 150 80 Q155 70 160 80 Q165 70 170 80 Q175 70 180 80 Q185 70 190 80'/%3E%3C/svg%3E"),
+        /* Farm landscape */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200' fill='%234CAF50' opacity='0.08'%3E%3Cpath d='M0 150 Q50 140 100 150 Q150 140 200 150 Q250 140 300 150 Q350 140 400 150 L400 200 L0 200 Z'/%3E%3C!-- Farm buildings --%3E%3Crect x='80' y='120' width='30' height='30' fill='%23795548'/%3E%3Cpath d='M80 120 L95 105 L110 120 Z' fill='%23D32F2F'/%3E%3Crect x='200' y='125' width='25' height='25' fill='%23795548'/%3E%3Cpath d='M200 125 L212.5 110 L225 125 Z' fill='%23D32F2F'/%3E%3C/svg%3E");
+    background-repeat: repeat-x, repeat-x;
+    background-size: 300px 150px, 500px 200px;
+    background-position: 0 bottom, 0 bottom;
+    animation: fieldSway 20s ease-in-out infinite, landscapeMove 40s linear infinite;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* Animated farmer working in the field */
+.farmer-dashboard::after {
+    content: '';
+    position: fixed;
+    bottom: 15%;
+    left: -150px;
+    width: 120px;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80' fill='%23795548'%3E%3C!-- Farmer body --%3E%3Cellipse cx='60' cy='50' rx='15' ry='20' fill='%234CAF50'/%3E%3C!-- Head --%3E%3Ccircle cx='60' cy='25' r='12' fill='%23D7CCC8'/%3E%3C!-- Hat --%3E%3Cellipse cx='60' cy='20' rx='15' ry='8' fill='%23795548'/%3E%3C!-- Arms --%3E%3Cellipse cx='45' cy='40' rx='8' ry='15' fill='%23D7CCC8' transform='rotate(-20 45 40)'/%3E%3Cellipse cx='75' cy='40' rx='8' ry='15' fill='%23D7CCC8' transform='rotate(20 75 40)'/%3E%3C!-- Legs --%3E%3Cellipse cx='55' cy='65' rx='6' ry='12' fill='%23795548'/%3E%3Cellipse cx='65' cy='65' rx='6' ry='12' fill='%23795548'/%3E%3C!-- Tool (hoe) --%3E%3Cline x1='75' y1='35' x2='95' y2='25' stroke='%23795548' stroke-width='3'/%3E%3Crect x='93' y='20' width='8' height='12' fill='%23607D8B'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: farmerWork 25s linear infinite;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+@keyframes fieldSway {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(10px); }
+}
+
+@keyframes landscapeMove {
+    0% { background-position: 0 bottom, 0 bottom; }
+    100% { background-position: -500px bottom, -400px bottom; }
+}
+
+@keyframes farmerWork {
+    0% { 
+        left: -150px; 
+        transform: scaleX(1) translateY(0px);
+    }
+    25% { 
+        transform: scaleX(1) translateY(-5px);
+    }
+    45% { 
+        left: calc(100% - 100px); 
+        transform: scaleX(1) translateY(0px);
+    }
+    50% { 
+        left: calc(100% - 100px); 
+        transform: scaleX(-1) translateY(0px);
+    }
+    75% { 
+        transform: scaleX(-1) translateY(-5px);
+    }
+    95% { 
+        left: -150px; 
+        transform: scaleX(-1) translateY(0px);
+    }
+    100% { 
+        left: -150px; 
+        transform: scaleX(1) translateY(0px);
+    }
+}
+
+/* Animated ox plowing the field */
+.farmer-dashboard .stats-grid::before {
+    content: '';
+    position: fixed;
+    bottom: 25%;
+    right: -200px;
+    width: 160px;
+    height: 100px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100' fill='%23795548'%3E%3C!-- Ox body --%3E%3Cellipse cx='80' cy='60' rx='45' ry='25' fill='%238D6E63'/%3E%3C!-- Ox head --%3E%3Cellipse cx='40' cy='50' rx='20' ry='18' fill='%23A1887F'/%3E%3C!-- Horns --%3E%3Cpath d='M25 35 Q20 25 15 30 M25 35 Q20 25 25 25' stroke='%23FFFFFF' stroke-width='3' fill='none'/%3E%3Cpath d='M55 35 Q60 25 65 30 M55 35 Q60 25 55 25' stroke='%23FFFFFF' stroke-width='3' fill='none'/%3E%3C!-- Legs --%3E%3Crect x='50' y='80' width='8' height='15' fill='%23795548'/%3E%3Crect x='65' y='80' width='8' height='15' fill='%23795548'/%3E%3Crect x='95' y='80' width='8' height='15' fill='%23795548'/%3E%3Crect x='110' y='80' width='8' height='15' fill='%23795548'/%3E%3C!-- Tail --%3E%3Cpath d='M125 55 Q135 45 140 55 Q135 65 125 60' fill='%236D4C41'/%3E%3C!-- Plow --%3E%3Cpath d='M130 70 L150 75 L155 85 L135 80 Z' fill='%23607D8B'/%3E%3Cline x1='125' y1='65' x2='130' y2='70' stroke='%23795548' stroke-width='4'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: oxPlowing 30s linear infinite 10s;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+@keyframes oxPlowing {
+    0% { 
+        right: -200px; 
+        transform: scaleX(-1);
+    }
+    40% { 
+        right: calc(100% - 120px); 
+        transform: scaleX(-1);
+    }
+    45% { 
+        right: calc(100% - 120px); 
+        transform: scaleX(1);
+    }
+    85% { 
+        right: -200px; 
+        transform: scaleX(1);
+    }
+    100% { 
+        right: -200px; 
+        transform: scaleX(-1);
+    }
+}
+
+/* Large animated tractor working in the field */
+.farmer-dashboard .dashboard-section:nth-child(1)::before {
+    content: '';
+    position: fixed;
+    bottom: 35%;
+    left: -250px;
+    width: 200px;
+    height: 120px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120' fill='%23FF6B35'%3E%3C!-- Tractor body --%3E%3Crect x='50' y='40' width='100' height='50' rx='8' fill='%23FF6B35'/%3E%3C!-- Cabin --%3E%3Crect x='120' y='20' width='35' height='40' rx='5' fill='%23E55A2B'/%3E%3C!-- Engine hood --%3E%3Crect x='30' y='50' width='25' height='30' rx='5' fill='%23D84315'/%3E%3C!-- Front wheel --%3E%3Ccircle cx='35' cy='90' r='20' fill='%23333' stroke='%23666' stroke-width='3'/%3E%3C!-- Rear wheel --%3E%3Ccircle cx='165' cy='90' r='25' fill='%23333' stroke='%23666' stroke-width='3'/%3E%3C!-- Wheel spokes front --%3E%3Cline x1='35' y1='70' x2='35' y2='110' stroke='%23888' stroke-width='2'/%3E%3Cline x1='15' y1='90' x2='55' y2='90' stroke='%23888' stroke-width='2'/%3E%3C!-- Wheel spokes rear --%3E%3Cline x1='165' y1='65' x2='165' y2='115' stroke='%23888' stroke-width='2'/%3E%3Cline x1='140' y1='90' x2='190' y2='90' stroke='%23888' stroke-width='2'/%3E%3C!-- Exhaust pipe --%3E%3Crect x='145' y='15' width='6' height='25' fill='%23424242'/%3E%3C!-- Smoke --%3E%3Ccircle cx='148' cy='10' r='3' fill='%23757575' opacity='0.6'/%3E%3Ccircle cx='145' cy='5' r='2' fill='%23757575' opacity='0.4'/%3E%3C!-- Plow attachment --%3E%3Cpath d='M190 85 L210 90 L215 100 L195 95 Z' fill='%23607D8B'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: tractorFarming 35s linear infinite;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* Additional ox with cart */
+.farmer-dashboard .dashboard-section:nth-child(2)::before {
+    content: '';
+    position: fixed;
+    bottom: 45%;
+    right: -180px;
+    width: 140px;
+    height: 90px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 90' fill='%23A1887F'%3E%3C!-- Second ox body --%3E%3Cellipse cx='70' cy='55' rx='40' ry='22' fill='%23BCAAA4'/%3E%3C!-- Head --%3E%3Cellipse cx='35' cy='45' rx='18' ry='16' fill='%23D7CCC8'/%3E%3C!-- Horns --%3E%3Cpath d='M22 30 Q17 20 12 25 M22 30 Q17 20 22 20' stroke='%23FFFFFF' stroke-width='2.5' fill='none'/%3E%3Cpath d='M48 30 Q53 20 58 25 M48 30 Q53 20 48 20' stroke='%23FFFFFF' stroke-width='2.5' fill='none'/%3E%3C!-- Legs --%3E%3Crect x='45' y='72' width='7' height='13' fill='%23795548'/%3E%3Crect x='58' y='72' width='7' height='13' fill='%23795548'/%3E%3Crect x='85' y='72' width='7' height='13' fill='%23795548'/%3E%3Crect x='98' y='72' width='7' height='13' fill='%23795548'/%3E%3C!-- Tail --%3E%3Cpath d='M110 50 Q120 40 125 50 Q120 60 110 55' fill='%236D4C41'/%3E%3C!-- Cart --%3E%3Crect x='115' y='45' width='20' height='15' fill='%23795548' rx='2'/%3E%3Ccircle cx='125' cy='70' r='8' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3C!-- Hay in cart --%3E%3Cpath d='M118 42 Q125 35 132 42' stroke='%23FFC107' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: oxCart 40s linear infinite 20s;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+/* Harvester machine */
+.farmer-dashboard .dashboard-section:nth-child(3)::before {
+    content: '';
+    position: fixed;
+    bottom: 55%;
+    left: -220px;
+    width: 180px;
+    height: 110px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 110' fill='%23FFA726'%3E%3C!-- Harvester body --%3E%3Crect x='30' y='35' width='90' height='40' rx='8' fill='%23FFA726'/%3E%3C!-- Cabin --%3E%3Crect x='100' y='20' width='30' height='30' rx='5' fill='%23FF9800'/%3E%3C!-- Cutting header --%3E%3Crect x='10' y='45' width='25' height='20' rx='3' fill='%23E65100'/%3E%3C!-- Wheels --%3E%3Ccircle cx='45' cy='80' r='15' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3Ccircle cx='105' cy='80' r='15' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3C!-- Grain tank --%3E%3Crect x='55' y='25' width='35' height='25' rx='5' fill='%23FFB74D'/%3E%3C!-- Cutting blades --%3E%3Cpath d='M10 55 L20 50 L30 55 L20 60 Z' fill='%23B71C1C'/%3E%3Cpath d='M15 60 L25 55 L35 60 L25 65 Z' fill='%23B71C1C'/%3E%3C!-- Grain spout --%3E%3Cpath d='M90 30 Q100 25 110 35' stroke='%23795548' stroke-width='4' fill='none'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: harvesterWork 45s linear infinite 15s;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+@keyframes tractorFarming {
+    0% { 
+        left: -250px; 
+        transform: scaleX(1);
+    }
+    40% { 
+        left: calc(100% - 150px); 
+        transform: scaleX(1);
+    }
+    45% { 
+        left: calc(100% - 150px); 
+        transform: scaleX(-1);
+    }
+    85% { 
+        left: -250px; 
+        transform: scaleX(-1);
+    }
+    100% { 
+        left: -250px; 
+        transform: scaleX(1);
+    }
+}
+
+@keyframes oxCart {
+    0% { 
+        right: -180px; 
+        transform: scaleX(-1);
+    }
+    35% { 
+        right: calc(100% - 120px); 
+        transform: scaleX(-1);
+    }
+    40% { 
+        right: calc(100% - 120px); 
+        transform: scaleX(1);
+    }
+    75% { 
+        right: -180px; 
+        transform: scaleX(1);
+    }
+    100% { 
+        right: -180px; 
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes harvesterWork {
+    0% { 
+        left: -220px; 
+        transform: scaleX(1);
+    }
+    38% { 
+        left: calc(100% - 160px); 
+        transform: scaleX(1);
+    }
+    42% { 
+        left: calc(100% - 160px); 
+        transform: scaleX(-1);
+    }
+    80% { 
+        left: -220px; 
+        transform: scaleX(-1);
+    }
+    100% { 
+        left: -220px; 
+        transform: scaleX(1);
+    }
+}
+
+/* Flying birds animation */
+.farmer-dashboard .page-wrapper::before {
+    content: '';
+    position: fixed;
+    top: 15%;
+    left: -100px;
+    width: 80px;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40' fill='%23424242' opacity='0.4'%3E%3Cpath d='M10 20 Q20 10 30 20 Q40 10 50 20 M15 25 Q25 15 35 25 Q45 15 55 25'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: birdsFlying 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes birdsFlying {
+    0% { 
+        left: -100px; 
+        transform: translateY(0px);
+    }
+    25% { 
+        transform: translateY(-10px);
+    }
+    50% { 
+        transform: translateY(5px);
+    }
+    75% { 
+        transform: translateY(-8px);
+    }
+    100% { 
+        left: calc(100% + 100px); 
+        transform: translateY(0px);
+    }
+}
+
+/* Animated sun */
+.farmer-dashboard .page-wrapper::after {
+    content: '';
+    position: fixed;
+    top: 8%;
+    right: 8%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(255, 235, 59, 0.8) 0%, rgba(255, 235, 59, 0.4) 40%, transparent 70%);
+    border-radius: 50%;
+    animation: sunGlow 8s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes sunGlow {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+
+/* -------------- ADDITIONAL FARMING ANIMATIONS -------------- */
+
+/* Animated wheat stalks in corners */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    width: 100%;
+    position: relative;
+}
+
+.page-wrapper .dashboard-section:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    width: 30px;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 50' fill='%23FFC107' opacity='0.3'%3E%3Cpath d='M15 45 L15 10 M10 12 L20 12 M8 17 L22 17 M10 22 L20 22 M12 27 L18 27'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: wheatSway 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.page-wrapper .dashboard-section:nth-child(even)::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    width: 25px;
+    height: 45px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 45' fill='%234CAF50' opacity='0.3'%3E%3Cpath d='M12.5 40 L12.5 8 M8 10 L17 10 M6 15 L19 15 M8 20 L17 20 M10 25 L15 25'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: wheatSway 10s ease-in-out infinite 2s;
+    pointer-events: none;
+}
+
+@keyframes wheatSway {
+    0%, 100% { transform: rotate(0deg) translateX(0px); }
+    25% { transform: rotate(2deg) translateX(2px); }
+    50% { transform: rotate(0deg) translateX(0px); }
+    75% { transform: rotate(-2deg) translateX(-2px); }
+}
+
+/* Floating farming particles */
+.farmer-dashboard .stats-grid::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 193, 7, 0.4), transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(139, 195, 74, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 235, 59, 0.5), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(76, 175, 80, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 150px;
+    animation: farmingParticles 25s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+/* Water buffalo working in rice field */
+.farmer-dashboard .quick-actions-grid::before {
+    content: '';
+    position: fixed;
+    bottom: 20%;
+    left: -200px;
+    width: 160px;
+    height: 100px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100' fill='%23424242'%3E%3C!-- Water buffalo body --%3E%3Cellipse cx='80' cy='60' rx='50' ry='28' fill='%23424242'/%3E%3C!-- Head --%3E%3Cellipse cx='35' cy='50' rx='22' ry='20' fill='%23616161'/%3E%3C!-- Large curved horns --%3E%3Cpath d='M20 35 Q10 20 5 30 Q8 40 15 35' stroke='%23FFFFFF' stroke-width='4' fill='%23E0E0E0'/%3E%3Cpath d='M50 35 Q60 20 65 30 Q62 40 55 35' stroke='%23FFFFFF' stroke-width='4' fill='%23E0E0E0'/%3E%3C!-- Legs --%3E%3Crect x='50' y='85' width='10' height='12' fill='%23424242'/%3E%3Crect x='70' y='85' width='10' height='12' fill='%23424242'/%3E%3Crect x='90' y='85' width='10' height='12' fill='%23424242'/%3E%3Crect x='110' y='85' width='10' height='12' fill='%23424242'/%3E%3C!-- Tail --%3E%3Cpath d='M130 55 Q140 45 145 55 Q140 65 130 60' fill='%23212121'/%3E%3C!-- Farmer on buffalo --%3E%3Cellipse cx='90' cy='45' rx='12' ry='18' fill='%234CAF50'/%3E%3Ccircle cx='90' cy='30' r='8' fill='%23D7CCC8'/%3E%3Cpath d='M85 25 Q90 20 95 25' stroke='%23795548' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: buffaloWork 50s linear infinite 25s;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Traditional bullock cart */
+.farmer-dashboard .quick-actions-grid::after {
+    content: '';
+    position: fixed;
+    bottom: 30%;
+    right: -190px;
+    width: 150px;
+    height: 95px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 95' fill='%23795548'%3E%3C!-- Bullock 1 --%3E%3Cellipse cx='40' cy='55' rx='25' ry='18' fill='%23A1887F'/%3E%3Cellipse cx='25' cy='48' rx='12' ry='14' fill='%23BCAAA4'/%3E%3Cpath d='M18 35 Q13 25 8 30 M18 35 Q13 25 18 25' stroke='%23FFFFFF' stroke-width='2' fill='none'/%3E%3Cpath d='M32 35 Q37 25 42 30 M32 35 Q37 25 32 25' stroke='%23FFFFFF' stroke-width='2' fill='none'/%3E%3C!-- Bullock 2 --%3E%3Cellipse cx='70' cy='55' rx='25' ry='18' fill='%23D7CCC8'/%3E%3Cellipse cx='55' cy='48' rx='12' ry='14' fill='%23E0E0E0'/%3E%3Cpath d='M48 35 Q43 25 38 30 M48 35 Q43 25 48 25' stroke='%23FFFFFF' stroke-width='2' fill='none'/%3E%3Cpath d='M62 35 Q67 25 72 30 M62 35 Q67 25 62 25' stroke='%23FFFFFF' stroke-width='2' fill='none'/%3E%3C!-- Cart --%3E%3Crect x='90' y='45' width='50' height='25' fill='%23795548' rx='3'/%3E%3Ccircle cx='105' cy='80' r='12' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3Ccircle cx='125' cy='80' r='12' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3C!-- Yoke --%3E%3Crect x='75' y='50' width='20' height='4' fill='%23795548'/%3E%3C!-- Load in cart --%3E%3Cpath d='M95 40 Q115 30 135 40 Q125 45 115 42 Q105 45 95 40' fill='%23FFC107'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: bullockCart 55s linear infinite 30s;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+@keyframes buffaloWork {
+    0% { 
+        left: -200px; 
+        transform: scaleX(1);
+    }
+    35% { 
+        left: calc(100% - 140px); 
+        transform: scaleX(1);
+    }
+    40% { 
+        left: calc(100% - 140px); 
+        transform: scaleX(-1);
+    }
+    75% { 
+        left: -200px; 
+        transform: scaleX(-1);
+    }
+    100% { 
+        left: -200px; 
+        transform: scaleX(1);
+    }
+}
+
+@keyframes bullockCart {
+    0% { 
+        right: -190px; 
+        transform: scaleX(-1);
+    }
+    30% { 
+        right: calc(100% - 130px); 
+        transform: scaleX(-1);
+    }
+    35% { 
+        right: calc(100% - 130px); 
+        transform: scaleX(1);
+    }
+    70% { 
+        right: -190px; 
+        transform: scaleX(1);
+    }
+    100% { 
+        right: -190px; 
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes farmingParticles {
+    0% { 
+        transform: translateY(0px) translateX(0px); 
+        background-position: 0 0;
+    }
+    100% { 
+        transform: translateY(-150px) translateX(30px); 
+        background-position: -200px -150px;
+    }
+}
+
+/* Enhanced loading animation with farming theme */
+.farmer-dashboard.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    font-size: 22px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+}
+
+.loading-spinner {
+    animation: farmingLoad 2s ease-in-out infinite;
+    position: relative;
+}
+
+.loading-spinner::before {
+    content: '🚜';
+    font-size: 48px;
+    display: block;
+    margin-bottom: 20px;
+    animation: tractorBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes farmingLoad {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes tractorBounce {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+/* -------------- ENHANCED RESPONSIVE DESIGN -------------- */
+
+@media (max-width: 1024px) {
+    .farmer-dashboard {
+        padding: 15px 25px;
+        gap: 25px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .stat-card {
+        padding: 25px 20px;
+    }
+    
+    .stat-icon {
+        font-size: 42px;
+    }
+    
+    .stat-info h3 {
+        font-size: 32px;
+    }
+    
+    .dashboard-section {
+        padding: 30px 25px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .quick-actions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .quick-action-card {
+        padding: 20px;
+    }
+    
+    .action-icon {
+        font-size: 42px;
+    }
+    
+    /* Reduce animation complexity on tablets */
+    .farmer-dashboard::after,
+    .farmer-dashboard .stats-grid::before,
+    .farmer-dashboard .dashboard-section:nth-child(1)::before,
+    .farmer-dashboard .dashboard-section:nth-child(2)::before,
+    .farmer-dashboard .dashboard-section:nth-child(3)::before {
+        animation-duration: 45s;
+        opacity: 0.4;
+        width: 80%;
+        height: 80%;
+    }
+    
+    .farmer-dashboard .quick-actions-grid::before,
+    .farmer-dashboard .quick-actions-grid::after {
+        animation-duration: 60s;
+        opacity: 0.3;
+    }
+}
+
+@media (max-width: 768px) {
+    .farmer-dashboard {
+        padding: 15px 20px;
+        gap: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+    
+    .stat-card {
+        padding: 20px 15px;
+    }
+    
+    .stat-icon {
+        font-size: 36px;
+    }
+    
+    .stat-info h3 {
+        font-size: 28px;
+    }
+    
+    .stat-info p {
+        font-size: 14px;
+    }
+    
+    .dashboard-section {
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .title-icon {
+        font-size: 28px;
+    }
+    
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .quick-action-card {
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .action-icon {
+        font-size: 40px;
+    }
+    
+    .action-title {
+        font-size: 16px;
+    }
+    
+    .action-subtitle {
+        font-size: 13px;
+    }
+    
+    .empty-state {
+        padding: 40px 30px;
+    }
+    
+    .empty-state-icon {
+        font-size: 56px;
+    }
+    
+    .empty-state h4 {
+        font-size: 1.3rem;
+    }
+    
+    /* Reduce animation complexity on mobile */
+    .farmer-dashboard::after,
+    .farmer-dashboard .stats-grid::before,
+    .farmer-dashboard .dashboard-section:nth-child(1)::before,
+    .farmer-dashboard .dashboard-section:nth-child(2)::before,
+    .farmer-dashboard .dashboard-section:nth-child(3)::before {
+        display: none;
+    }
+    
+    .farmer-dashboard .stats-grid::after {
+        animation-duration: 40s;
+        opacity: 0.3;
+    }
+    
+    .farmer-dashboard .quick-actions-grid::before,
+    .farmer-dashboard .quick-actions-grid::after {
+        width: 100px;
+        height: 60px;
+        animation-duration: 50s;
+        opacity: 0.2;
+    }
+    
+    .page-wrapper .dashboard-section::after {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .farmer-dashboard {
+        padding: 10px 15px;
+        gap: 15px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+    }
+    
+    .stat-card {
+        padding: 18px 12px;
+        border-radius: 16px;
+    }
+    
+    .stat-icon {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    
+    .stat-info h3 {
+        font-size: 24px;
+    }
+    
+    .stat-info p {
+        font-size: 12px;
+    }
+    
+    .stat-decoration {
+        font-size: 20px;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .dashboard-section {
+        padding: 20px 15px;
+        border-radius: 16px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .title-icon {
+        font-size: 24px;
+    }
+    
+    .quick-actions-grid {
+        gap: 12px;
+    }
+    
+    .quick-action-card {
+        padding: 18px 15px;
+        border-radius: 16px;
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .action-icon {
+        font-size: 36px;
+    }
+    
+    .action-title {
+        font-size: 15px;
+    }
+    
+    .action-subtitle {
+        font-size: 12px;
+    }
+    
+    .action-arrow {
+        font-size: 20px;
+        transform: rotate(90deg);
+    }
+    
+    .quick-action-card:hover .action-arrow {
+        transform: rotate(90deg) translateY(-8px) scale(1.2);
+    }
+    
+    .empty-state {
+        padding: 30px 20px;
+    }
+    
+    .empty-state-icon {
+        font-size: 48px;
+    }
+    
+    .empty-state h4 {
+        font-size: 1.2rem;
+    }
+    
+    .empty-state p {
+        font-size: 0.9rem;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+    }
+    
+    .farm-form input,
+    .farm-form select,
+    .crop-form input,
+    .crop-form select {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    /* Minimal animations for very small screens */
+    .farmer-dashboard .stats-grid::after,
+    .farmer-dashboard .quick-actions-grid::before,
+    .farmer-dashboard .quick-actions-grid::after {
+        display: none;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-6px) scale(1.01);
+    }
+    
+    .quick-action-card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+}
+
+/* -------------- ACCESSIBILITY - REDUCED MOTION -------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .farmer-dashboard,
+    .farmer-dashboard.page-loaded .stats-grid .stat-card,
+    .farmer-dashboard.page-loaded .dashboard-section,
+    .farmer-dashboard::before,
+    .farmer-dashboard::after,
+    .farmer-dashboard .stats-grid::before,
+    .farmer-dashboard .stats-grid::after,
+    .farmer-dashboard .dashboard-section::before,
+    .farmer-dashboard .quick-actions-grid::before,
+    .farmer-dashboard .quick-actions-grid::after,
+    .page-wrapper .dashboard-section::after,
+    .stat-icon,
+    .stat-info h3,
+    .stat-decoration,
+    .quick-action-card,
+    .action-icon,
+    .title-icon,
+    .loading-tractor,
+    .empty-state-icon,
+    .farm-action,
+    .crop-action,
+    .vacancy-action,
+    .machinery-action {
+        animation: none !important;
+    }
+    
+    .stat-card:hover,
+    .quick-action-card:hover,
+    .dashboard-section:hover,
+    .empty-state:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none !important;
+    }
+    
+    .quick-action-card:hover .action-arrow {
+        transform: none !important;
+    }
+}
+
+
+/* -------------- ENHANCED STATS GRID WITH PREMIUM ANIMATIONS -------------- */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(248, 252, 248, 0.95) 100%
+    );
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 
+        0 10px 30px rgba(76, 175, 80, 0.15),
+        0 4px 12px rgba(76, 175, 80, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(76, 175, 80, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        #4CAF50 0%, 
+        #66BB6A 25%, 
+        #81C784 50%, 
+        #A5D6A7 75%, 
+        #C8E6C9 100%
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s ease;
+}
+
+.stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.08) 0%, transparent 70%);
+    transition: all 0.8s ease;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.stat-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 
+        0 20px 50px rgba(76, 175, 80, 0.25),
+        0 8px 20px rgba(76, 175, 80, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+.stat-card:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.stat-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: iconFloat 4s ease-in-out infinite;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes iconFloat {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg) scale(1); 
+    }
+    25% { 
+        transform: translateY(-8px) rotate(2deg) scale(1.05); 
+    }
+    50% { 
+        transform: translateY(-4px) rotate(0deg) scale(1.02); 
+    }
+    75% { 
+        transform: translateY(-6px) rotate(-1deg) scale(1.03); 
+    }
+}
+
+.stat-info {
+    position: relative;
+    z-index: 2;
+}
+
+.stat-info h3 {
+    font-size: 36px;
+    margin: 0 0 8px 0;
+    background: linear-gradient(135deg, #1B5E20, #2E7D32, #4CAF50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    animation: numberPulse 3s ease-in-out infinite;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes numberPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+.stat-info p {
+    margin: 0;
+    color: #2E7D32;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.stat-decoration {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    opacity: 0.3;
+    animation: decorationFloat 6s ease-in-out infinite;
+}
+
+@keyframes decorationFloat {
+    0%, 100% { 
+        transform: rotate(0deg) scale(1); 
+        opacity: 0.3;
+    }
+    50% { 
+        transform: rotate(10deg) scale(1.1); 
+        opacity: 0.6;
+    }
+}
+
+
+/* -------------- ENHANCED SECTION WRAPPER WITH PREMIUM FARMING THEME -------------- */
+
+.dashboard-section {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(248, 252, 248, 0.95) 50%,
+        rgba(255, 255, 255, 0.95) 100%
+    );
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 35px;
+    width: 100%;
+    box-shadow: 
+        0 15px 35px rgba(76, 175, 80, 0.12),
+        0 6px 15px rgba(76, 175, 80, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    position: relative;
+    border: 2px solid rgba(76, 175, 80, 0.1);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboard-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(76, 175, 80, 0.05), 
+        transparent
+    );
+    animation: sectionSweep 15s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes sectionSweep {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: -100%; }
+}
+
+.dashboard-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 20px 45px rgba(76, 175, 80, 0.18),
+        0 8px 20px rgba(76, 175, 80, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(76, 175, 80, 0.2);
+}
+
+.section-header,
+.section-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #1B5E20, #2E7D32, #4CAF50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-icon {
+    font-size: 32px;
+    animation: titleIconPulse 3s ease-in-out infinite;
+}
+
+@keyframes titleIconPulse {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.1) rotate(5deg); 
+        opacity: 1;
+    }
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #4CAF50, #66BB6A, #81C784);
+    border-radius: 2px;
+    animation: titleUnderline 4s ease-in-out infinite;
+}
+
+@keyframes titleUnderline {
+    0%, 100% { 
+        width: 80px; 
+        opacity: 0.6;
+    }
+    50% { 
+        width: 120px; 
+        opacity: 1;
+    }
+}
+
+/* Enhanced Empty State */
+.empty-state {
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(76, 175, 80, 0.05), 
+        rgba(165, 214, 167, 0.05)
+    );
+    border-radius: 20px;
+    border: 2px dashed rgba(76, 175, 80, 0.2);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover {
+    border-color: rgba(76, 175, 80, 0.4);
+    background: linear-gradient(135deg, 
+        rgba(76, 175, 80, 0.08), 
+        rgba(165, 214, 167, 0.08)
+    );
+}
+
+.empty-state-icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 20px;
+    animation: seedGrow 5s ease-in-out infinite;
+}
+
+@keyframes seedGrow {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg); 
+        opacity: 0.7;
+    }
+    50% { 
+        transform: scale(1.15) rotate(8deg); 
+        opacity: 1;
+    }
+}
+
+.empty-state h4 {
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2E7D32;
+}
+
+.empty-state p {
+    margin: 0 0 25px 0;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.empty-state-action {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.empty-state-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+    background: linear-gradient(135deg, #66BB6A, #81C784);
+}
+
+
+/* -------------- PREMIUM QUICK ACTIONS GRID WITH ENHANCED ANIMATIONS -------------- */
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.quick-action-card {
+    background: linear-gradient(135deg, 
+        rgba(246, 253, 246, 0.95) 0%, 
+        rgba(232, 245, 233, 0.95) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 25px rgba(76, 175, 80, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.quick-action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(76, 175, 80, 0.1), 
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.quick-action-card:hover::before {
+    left: 100%;
+}
+
+.quick-action-card:hover {
+    background: linear-gradient(135deg, 
+        rgba(234, 255, 234, 0.95) 0%, 
+        rgba(200, 230, 201, 0.95) 100%
+    );
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 15px 40px rgba(76, 175, 80, 0.25),
+        0 8px 20px rgba(76, 175, 80, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(46, 125, 50, 0.4);
+}
+
+.quick-action-card:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    background: linear-gradient(135deg, 
+        rgba(245, 245, 245, 0.95) 0%, 
+        rgba(238, 238, 238, 0.95) 100%
+    );
+    border-color: rgba(204, 204, 204, 0.5);
+}
+
+.quick-action-card:disabled:hover {
+    transform: none;
+    box-shadow: 
+        0 8px 25px rgba(76, 175, 80, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.action-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+    animation: actionIconFloat 4s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.farm-action .action-icon {
+    animation-delay: 0s;
+}
+
+.crop-action .action-icon {
+    animation-delay: 1s;
+}
+
+.vacancy-action .action-icon {
+    animation-delay: 2s;
+}
+
+.machinery-action .action-icon {
+    animation-delay: 3s;
+}
+
+@keyframes actionIconFloat {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg) scale(1); 
+    }
+    25% { 
+        transform: translateY(-6px) rotate(3deg) scale(1.05); 
+    }
+    50% { 
+        transform: translateY(-3px) rotate(0deg) scale(1.02); 
+    }
+    75% { 
+        transform: translateY(-4px) rotate(-2deg) scale(1.03); 
+    }
+}
+
+.action-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    z-index: 2;
+}
+
+.action-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B5E20;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.action-subtitle {
+    font-size: 14px;
+    color: #4CAF50;
+    opacity: 0.8;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.action-arrow {
+    font-size: 24px;
+    color: #4CAF50;
+    font-weight: bold;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.quick-action-card:hover .action-arrow {
+    transform: translateX(8px) scale(1.2);
+    color: #2E7D32;
+}
+
+/* Specific action card animations */
+.farm-action {
+    animation: farmCardPulse 8s ease-in-out infinite;
+}
+
+.crop-action {
+    animation: cropCardGrow 10s ease-in-out infinite;
+}
+
+.vacancy-action {
+    animation: vacancyCardSway 12s ease-in-out infinite;
+}
+
+.machinery-action {
+    animation: machineryCardRumble 6s ease-in-out infinite;
+}
+
+@keyframes farmCardPulse {
+    0%, 100% { 
+        box-shadow: 
+            0 8px 25px rgba(76, 175, 80, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+    50% { 
+        box-shadow: 
+            0 12px 35px rgba(76, 175, 80, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+}
+
+@keyframes cropCardGrow {
+    0%, 100% { 
+        border-color: rgba(76, 175, 80, 0.2);
+    }
+    50% { 
+        border-color: rgba(76, 175, 80, 0.3);
+    }
+}
+
+@keyframes vacancyCardSway {
+    0%, 100% { 
+        transform: translateX(0px);
+    }
+    50% { 
+        transform: translateX(2px);
+    }
+}
+
+@keyframes machineryCardRumble {
+    0%, 100% { 
+        transform: rotate(0deg);
+    }
+    25% { 
+        transform: rotate(0.3deg);
+    }
+    75% { 
+        transform: rotate(-0.3deg);
+    }
+}tion-card:active {
+    transform: translateY(-6px) scale(1.01);
+}
+
+.quick-action-card:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+.quick-action-card span {
+    position: relative;
+    z-index: 2;
+    color: #2E7D32;
+    font-weight: 700;
+}
+
+/* Add specific animations for each action type */
+.quick-action-card:nth-child(1) {
+    animation: farmBounce 6s ease-in-out infinite;
+}
+
+.quick-action-card:nth-child(2) {
+    animation: cropGrow 8s ease-in-out infinite;
+}
+
+.quick-action-card:nth-child(3) {
+    animation: workerMove 10s ease-in-out infinite;
+}
+
+.quick-action-card:nth-child(4) {
+    animation: machineryRumble 7s ease-in-out infinite;
+}
+
+@keyframes farmBounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes cropGrow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes workerMove {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(2px); }
+}
+
+@keyframes machineryRumble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(0.5deg); }
+    75% { transform: rotate(-0.5deg); }
+}
+
+
+/* -------------- ENHANCED FORMS & MODALS -------------- */
+
+.farm-form,
+.crop-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 700;
+    color: #1B5E20;
+    margin-bottom: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group label::before {
+    content: '🌾';
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.farm-form input,
+.farm-form select,
+.crop-form input,
+.crop-form select {
+    padding: 15px 18px;
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    border-radius: 12px;
+    font-size: 16px;
+    width: 100%;
+    background: rgba(248, 252, 248, 0.5);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.farm-form input:focus,
+.farm-form select:focus,
+.crop-form input:focus,
+.crop-form select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    background: rgba(248, 252, 248, 0.8);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    transform: translateY(-2px);
+}
+
+.farm-form input::placeholder,
+.crop-form input::placeholder {
+    color: rgba(76, 175, 80, 0.6);
+    font-style: italic;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(76, 175, 80, 0.1);
+}
+
+.btn-primary {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #66BB6A, #81C784);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-secondary {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    border-radius: 12px;
+    border: 2px solid rgba(158, 158, 158, 0.3);
+    color: #666;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #e0e0e0, #d5d5d5);
+    border-color: rgba(158, 158, 158, 0.5);
+    transform: translateY(-1px);
+}
+
+/* -------------- WEATHER / AI / CUSTOM CONTENT -------------- */
+
+.weather-container,
+.ai-container {
+    width: 100%;
+    display: block;
+}
+
+.weather-section {
+    background: linear-gradient(135deg, 
+        rgba(33, 150, 243, 0.05) 0%, 
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(76, 175, 80, 0.05) 100%
+    );
+}
+
+.ai-section {
+    background: linear-gradient(135deg, 
+        rgba(156, 39, 176, 0.05) 0%, 
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(76, 175, 80, 0.05) 100%
+    );
+}
+
+.actions-section {
+    background: linear-gradient(135deg, 
+        rgba(255, 193, 7, 0.05) 0%, 
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(76, 175, 80, 0.05) 100%
+    );
+}
+
+/* Make sure no section is hidden */
+.farmer-dashboard * {
+    max-width: 100%;
+}

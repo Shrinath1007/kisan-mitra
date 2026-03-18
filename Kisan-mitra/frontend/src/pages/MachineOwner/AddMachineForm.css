@@ -1,0 +1,796 @@
+/* Enhanced Add Machine Form with Agriculture Theme */
+
+:root {
+  --primary-green: #2E7D32;
+  --primary-green-light: #4CAF50;
+  --primary-green-dark: #1B5E20;
+  --accent-orange: #FF8F00;
+  --accent-brown: #5D4037;
+  --accent-yellow: #FFC107;
+  --bg-cream: #FFF8E1;
+  --bg-light-green: #F1F8E9;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #e5e5e5;
+  --shadow-light: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-medium: 0 8px 25px rgba(46, 125, 50, 0.15);
+  --shadow-heavy: 0 15px 35px rgba(46, 125, 50, 0.2);
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Main Container with Agriculture Background */
+.add-machine-container {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--bg-light-green) 0%, var(--bg-cream) 100%);
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated Background Elements */
+.add-machine-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%234CAF50' opacity='0.03'%3E%3Cpath d='M20 60 L30 50 L70 50 L80 60 L80 70 L70 75 L30 75 L20 70 Z M25 65 A5 5 0 1 1 35 65 A5 5 0 1 1 25 65 M65 65 A5 5 0 1 1 75 65 A5 5 0 1 1 65 65'/%3E%3C/svg%3E") repeat;
+  animation: floatTractors 25s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes floatTractors {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-200px) translateX(50px); }
+}
+
+.add-machine-container::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='%234CAF50' opacity='0.05'%3E%3Cpath d='M0 80 Q50 70 100 80 Q150 70 200 80 L200 100 L0 100 Z'/%3E%3C/svg%3E") repeat-x;
+  animation: fieldWave 12s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes fieldWave {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(30px); }
+}
+
+/* Enhanced Form Card */
+.add-machine-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 252, 248, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 3rem;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid rgba(76, 175, 80, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: cardSlideIn 0.8s ease-out;
+}
+
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.add-machine-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-green), var(--accent-orange), var(--primary-green-light), var(--accent-yellow));
+  background-size: 400% 100%;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.add-machine-card::after {
+  content: '🚜';
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  opacity: 0.05;
+  animation: tractorFloat 4s ease-in-out infinite;
+}
+
+@keyframes tractorFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+/* Enhanced Header */
+.add-machine-card h2 {
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.1); }
+}
+
+.add-machine-card h2::before {
+  content: '🌾';
+  font-size: 2rem;
+  animation: leafSway 3s ease-in-out infinite;
+}
+
+.add-machine-card h2::after {
+  content: '🚜';
+  font-size: 2rem;
+  animation: tractorBounce 3s ease-in-out infinite 0.5s;
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes tractorBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Enhanced Form Styling */
+.add-machine-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  animation: formGroupSlideIn 0.6s ease-out;
+}
+
+@keyframes formGroupSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.form-group label {
+  font-weight: 700;
+  color: var(--primary-green);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group label::before {
+  content: '🏷️';
+  font-size: 1rem;
+}
+
+/* Enhanced Input Styling */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(76, 175, 80, 0.2);
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 252, 248, 0.9));
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1), 0 8px 25px rgba(76, 175, 80, 0.15);
+  transform: translateY(-2px);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: var(--primary-green-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+}
+
+/* Enhanced Select Styling */
+.form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234CAF50'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.5rem;
+  appearance: none;
+}
+
+/* Enhanced Checkbox Group */
+.form-group-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(255, 193, 7, 0.05));
+  border-radius: 15px;
+  border: 2px solid rgba(76, 175, 80, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-group-checkbox::before {
+  content: '✅';
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  opacity: 0.1;
+}
+
+.form-group-checkbox:hover {
+  border-color: var(--primary-green-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.15);
+}
+
+.form-group-checkbox input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: var(--primary-green);
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.form-group-checkbox label {
+  font-weight: 700;
+  color: var(--primary-green);
+  cursor: pointer;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Enhanced File Input */
+.file-input {
+  position: relative;
+  width: 100%;
+  padding: 2rem;
+  border: 3px dashed var(--primary-green);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(255, 193, 7, 0.05));
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  color: var(--primary-green);
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.file-input::before {
+  content: '📸';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  opacity: 0.2;
+  animation: cameraFloat 3s ease-in-out infinite;
+}
+
+@keyframes cameraFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.file-input:hover {
+  border-color: var(--accent-orange);
+  background: linear-gradient(135deg, rgba(255, 143, 0, 0.05), rgba(76, 175, 80, 0.05));
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+}
+
+.file-input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+}
+
+.file-input::file-selector-button {
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 1.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.file-input::file-selector-button:hover {
+  background: linear-gradient(135deg, var(--primary-green-light), var(--accent-orange));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Enhanced Submit Button */
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+  color: white;
+  border: none;
+  padding: 1.5rem 3rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-green-light), var(--accent-orange));
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-heavy);
+}
+
+.submit-btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.submit-btn:disabled {
+  background: linear-gradient(135deg, #cccccc, #999999);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.submit-btn:disabled::before {
+  display: none;
+}
+
+/* Enhanced Message Styling */
+.error-message {
+  background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+  color: #C62828;
+  padding: 1.5rem;
+  border-radius: 15px;
+  border-left: 5px solid #F44336;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  animation: messageSlideIn 0.5s ease-out;
+}
+
+.error-message::before {
+  content: '⚠️';
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+}
+
+.success-message {
+  background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+  color: var(--primary-green-dark);
+  padding: 1.5rem;
+  border-radius: 15px;
+  border-left: 5px solid var(--primary-green);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  animation: messageSlideIn 0.5s ease-out;
+}
+
+.success-message::before {
+  content: '✅';
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+}
+
+@keyframes messageSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Enhanced Connection Status */
+.connection-status {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  animation: statusSlideIn 0.6s ease-out;
+}
+
+@keyframes statusSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.connection-status.success {
+  background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+  color: var(--primary-green-dark);
+  border: 2px solid var(--primary-green);
+}
+
+.connection-status.success::before {
+  content: '🟢';
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 1.2rem;
+}
+
+.connection-status.error {
+  background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+  color: #C62828;
+  border: 2px solid #F44336;
+}
+
+.connection-status.error::before {
+  content: '🔴';
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 1.2rem;
+}
+
+.refresh-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid currentColor;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Photo Preview */
+.photo-preview-section {
+  margin-top: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 252, 248, 0.9));
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 2px solid rgba(76, 175, 80, 0.1);
+  box-shadow: var(--shadow-light);
+  animation: previewSlideIn 0.6s ease-out;
+}
+
+@keyframes previewSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.photo-count {
+  margin-bottom: 1.5rem;
+  color: var(--primary-green);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.photo-count::before {
+  content: '📷';
+  font-size: 1.2rem;
+}
+
+.photo-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.photo-preview-item {
+  background: white;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-preview-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-green), var(--accent-orange));
+}
+
+.photo-preview-item:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-medium);
+}
+
+.preview-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.photo-preview-item:hover .preview-image {
+  transform: scale(1.05);
+}
+
+.photo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.photo-info small {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+  .add-machine-container {
+    padding: 1rem;
+  }
+  
+  .add-machine-card {
+    padding: 2rem;
+    border-radius: 20px;
+  }
+  
+  .add-machine-card h2 {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-group {
+    gap: 0.6rem;
+  }
+  
+  .add-machine-form {
+    gap: 1.5rem;
+  }
+  
+  .photo-preview-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .preview-image {
+    height: 100px;
+  }
+  
+  .photo-preview-section {
+    padding: 1.5rem;
+  }
+  
+  .submit-btn {
+    padding: 1.25rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .file-input {
+    padding: 1.5rem;
+  }
+  
+  .file-input::file-selector-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-machine-container {
+    padding: 0.5rem;
+  }
+  
+  .add-machine-card {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+  
+  .add-machine-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-group {
+    gap: 0.5rem;
+  }
+  
+  .add-machine-form {
+    gap: 1.25rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
+  
+  .photo-preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .preview-image {
+    height: 80px;
+  }
+  
+  .submit-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .file-input {
+    padding: 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .file-input::file-selector-button {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.85rem;
+    margin-right: 0.75rem;
+  }
+  
+  .connection-status {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding-left: 1rem;
+  }
+  
+  .connection-status.success::before,
+  .connection-status.error::before {
+    position: static;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Accessibility Enhancements */
+.submit-btn:focus,
+.file-input:focus,
+.refresh-btn:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .add-machine-container::before,
+  .add-machine-container::after,
+  .add-machine-card::after {
+    display: none;
+  }
+  
+  .add-machine-container {
+    background: white;
+  }
+  
+  .add-machine-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .submit-btn,
+  .refresh-btn {
+    display: none;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.3s ease;
+}

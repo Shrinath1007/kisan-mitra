@@ -1,0 +1,22 @@
+{
+  "dashboard": "Dashboard",
+  "crops": "My Crops",
+  "vacancies": "Vacancies",
+  "machinery": "Machinery",
+  "history": "History",
+  "yourCrops": "Your Crops",
+  "addCrop": "Add Crop",
+  "noFarms": "No farms or crops available.",
+  "laborVacancies": "Labor Vacancies",
+  "createVacancy": "Create Vacancy",
+  "bookMachinery": "Book Machinery",
+  "bookingHistory": "Booking History",
+  "aiWeatherSuggestions": "AI & Weather Suggestions",
+  "loadingSuggestions": "Loading AI suggestions...",
+  "postVacancy": "Post a Vacancy",
+  "addCropSuccess": "Crop added successfully!",
+  "addCropError": "Error adding crop",
+  "vacancySuccess": "Vacancy posted successfully!",
+  "vacancyError": "Failed to post vacancy",
+  "loadError": "Could not load dashboard data."
+}

@@ -1,0 +1,39 @@
+.prediction-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(8, 24, 40, 0.06);
+}
+
+.prediction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.prediction-item {
+    display: flex;
+    justify-content: space-between;
+    background: #f7fff7;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+}
+
+.prediction-item h4 {
+    margin: 0 0 4px;
+}
+
+.prediction-item .small {
+    font-size: 12px;
+    color: #666;
+}
+
+.prediction-recommendation {
+    margin-top: 12px;
+    padding: 10px;
+    background: #fff8e1;
+    border-left: 4px solid #ffb300;
+    border-radius: 6px;
+}

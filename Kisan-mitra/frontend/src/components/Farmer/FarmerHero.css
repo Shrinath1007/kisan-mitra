@@ -1,0 +1,489 @@
+/* src/components/Farmer/FarmerHero.css */
+
+/* -------------- ENHANCED FARMING HERO SECTION -------------- */
+
+.farmer-hero {
+    position: relative;
+    background: linear-gradient(135deg, 
+        #2E7D32 0%, 
+        #388E3C 25%, 
+        #4CAF50 50%, 
+        #66BB6A 75%, 
+        #81C784 100%
+    );
+    color: white;
+    padding: 60px 30px;
+    border-radius: 24px;
+    margin-bottom: 30px;
+    box-shadow: 
+        0 20px 40px rgba(46, 125, 50, 0.3),
+        0 8px 16px rgba(46, 125, 50, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    animation: heroFadeIn 1.2s ease-out;
+}
+
+@keyframes heroFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -------------- ANIMATED BACKGROUND ELEMENTS -------------- */
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Animated Tractor */
+.hero-tractor {
+    position: absolute;
+    bottom: 20%;
+    left: -120px;
+    width: 100px;
+    height: 60px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' fill='%23FF6B35'%3E%3Crect x='20' y='20' width='50' height='25' rx='4' fill='%23FF6B35'/%3E%3Crect x='60' y='10' width='18' height='20' rx='3' fill='%23E55A2B'/%3E%3Crect x='15' y='25' width='12' height='15' rx='3' fill='%23D84315'/%3E%3Ccircle cx='18' cy='45' r='10' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3Ccircle cx='82' cy='45' r='12' fill='%23333' stroke='%23666' stroke-width='2'/%3E%3Cline x1='18' y1='35' x2='18' y2='55' stroke='%23888' stroke-width='1'/%3E%3Cline x1='8' y1='45' x2='28' y2='45' stroke='%23888' stroke-width='1'/%3E%3Cline x1='82' y1='33' x2='82' y2='57' stroke='%23888' stroke-width='1'/%3E%3Cline x1='70' y1='45' x2='94' y2='45' stroke='%23888' stroke-width='1'/%3E%3Crect x='72' y='8' width='3' height='12' fill='%23424242'/%3E%3Ccircle cx='73.5' cy='5' r='1.5' fill='%23757575' opacity='0.6'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: heroTractorMove 20s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes heroTractorMove {
+    0% { 
+        left: -120px; 
+        transform: scaleX(1);
+    }
+    45% { 
+        left: calc(100% - 80px); 
+        transform: scaleX(1);
+    }
+    50% { 
+        left: calc(100% - 80px); 
+        transform: scaleX(-1);
+    }
+    95% { 
+        left: -120px; 
+        transform: scaleX(-1);
+    }
+    100% { 
+        left: -120px; 
+        transform: scaleX(1);
+    }
+}
+
+/* Animated Crops */
+.hero-crops {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40' fill='%23A5D6A7' opacity='0.4'%3E%3Cpath d='M0 35 Q20 25 40 35 Q60 25 80 35 Q100 25 120 35 Q140 25 160 35 Q180 25 200 35 Q220 25 240 35 Q260 25 280 35 Q300 25 320 35 Q340 25 360 35 Q380 25 400 35 L400 40 L0 40 Z'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 200px 40px;
+    animation: cropsSway 8s ease-in-out infinite;
+}
+
+@keyframes cropsSway {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(10px); }
+}
+
+/* Irrigation System */
+.hero-irrigation {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    width: 60px;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 80' fill='%234FC3F7' opacity='0.5'%3E%3Crect x='25' y='10' width='10' height='50' fill='%23795548'/%3E%3Ccircle cx='30' cy='15' r='8' fill='%234FC3F7'/%3E%3Cpath d='M22 20 Q30 25 38 20' stroke='%234FC3F7' stroke-width='2' fill='none'/%3E%3Cpath d='M20 25 Q30 30 40 25' stroke='%234FC3F7' stroke-width='2' fill='none'/%3E%3Cpath d='M18 30 Q30 35 42 30' stroke='%234FC3F7' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: irrigationSpray 4s ease-in-out infinite;
+}
+
+@keyframes irrigationSpray {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* Flying Birds */
+.hero-birds {
+    position: absolute;
+    top: 15%;
+    left: -80px;
+    width: 60px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' fill='%23FFFFFF' opacity='0.6'%3E%3Cpath d='M10 15 Q20 8 30 15 Q40 8 50 15 M15 20 Q25 13 35 20 Q45 13 55 20'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: birdsFly 15s linear infinite;
+}
+
+@keyframes birdsFly {
+    0% { 
+        left: -80px; 
+        transform: translateY(0px);
+    }
+    25% { 
+        transform: translateY(-8px);
+    }
+    50% { 
+        transform: translateY(4px);
+    }
+    75% { 
+        transform: translateY(-6px);
+    }
+    100% { 
+        left: calc(100% + 80px); 
+        transform: translateY(0px);
+    }
+}
+
+/* -------------- HERO CONTENT -------------- */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-greeting {
+    flex: 1;
+    animation: slideInLeft 1s ease-out 0.3s both;
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-greeting h1 {
+    margin: 0 0 15px 0;
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8F5E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+}
+
+.hero-greeting p {
+    margin: 0;
+    font-size: 1.2rem;
+    opacity: 0.95;
+    line-height: 1.6;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------- HERO STATS -------------- */
+
+.hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: slideInRight 1s ease-out 0.6s both;
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.hero-stat-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hero-stat-icon {
+    font-size: 2rem;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+.hero-stat-item:nth-child(1) .hero-stat-icon {
+    animation-delay: 0s;
+}
+
+.hero-stat-item:nth-child(2) .hero-stat-icon {
+    animation-delay: 0.5s;
+}
+
+.hero-stat-item:nth-child(3) .hero-stat-icon {
+    animation-delay: 1s;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(2deg); }
+}
+
+.hero-stat-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.hero-stat-text span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+}
+
+.hero-stat-text small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* -------------- FLOATING ELEMENTS -------------- */
+
+.hero-floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-leaf,
+.floating-seed {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.6;
+}
+
+.floating-leaf-1 {
+    top: 20%;
+    left: 15%;
+    animation: floatLeaf 6s ease-in-out infinite;
+}
+
+.floating-leaf-2 {
+    top: 60%;
+    left: 80%;
+    animation: floatLeaf 8s ease-in-out infinite 2s;
+}
+
+.floating-leaf-3 {
+    top: 40%;
+    left: 70%;
+    animation: floatLeaf 7s ease-in-out infinite 4s;
+}
+
+.floating-seed-1 {
+    top: 30%;
+    left: 25%;
+    animation: floatSeed 5s ease-in-out infinite 1s;
+}
+
+.floating-seed-2 {
+    top: 70%;
+    left: 60%;
+    animation: floatSeed 6s ease-in-out infinite 3s;
+}
+
+@keyframes floatLeaf {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-15px) rotate(10deg); 
+        opacity: 0.8;
+    }
+}
+
+@keyframes floatSeed {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-10px) scale(1.1); 
+        opacity: 0.9;
+    }
+}
+
+/* -------------- RESPONSIVE DESIGN -------------- */
+
+@media (max-width: 1024px) {
+    .farmer-hero {
+        padding: 50px 25px;
+        min-height: 240px;
+    }
+    
+    .hero-content {
+        gap: 30px;
+    }
+    
+    .hero-greeting h1 {
+        font-size: 2.4rem;
+    }
+    
+    .hero-greeting p {
+        font-size: 1.1rem;
+    }
+    
+    .hero-stats {
+        gap: 15px;
+    }
+    
+    .hero-stat-item {
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .farmer-hero {
+        padding: 40px 20px;
+        min-height: 200px;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+    
+    .hero-greeting h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-greeting p {
+        font-size: 1rem;
+    }
+    
+    .hero-stats {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .hero-stat-item {
+        flex: 1;
+        min-width: 140px;
+        padding: 10px 12px;
+    }
+    
+    .hero-stat-icon {
+        font-size: 1.5rem;
+    }
+    
+    .hero-stat-text span {
+        font-size: 0.9rem;
+    }
+    
+    .hero-stat-text small {
+        font-size: 0.75rem;
+    }
+    
+    /* Reduce animation complexity on mobile */
+    .hero-tractor,
+    .hero-irrigation,
+    .hero-birds {
+        display: none;
+    }
+    
+    .floating-leaf,
+    .floating-seed {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .farmer-hero {
+        padding: 30px 15px;
+        border-radius: 16px;
+    }
+    
+    .hero-greeting h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-stat-item {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    /* Minimal animations for very small screens */
+    .hero-floating-elements {
+        display: none;
+    }
+}
+
+/* -------------- ACCESSIBILITY -------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .farmer-hero,
+    .hero-greeting,
+    .hero-stats,
+    .hero-tractor,
+    .hero-crops,
+    .hero-irrigation,
+    .hero-birds,
+    .hero-stat-icon,
+    .floating-leaf,
+    .floating-seed {
+        animation: none !important;
+    }
+    
+    .hero-stat-item:hover {
+        transform: none !important;
+    }
+}

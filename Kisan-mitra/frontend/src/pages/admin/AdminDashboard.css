@@ -1,0 +1,377 @@
+.admin-container {
+    padding: 30px;
+    text-align: center;
+    background: #f5f7fa;
+    min-height: 100vh;
+}
+
+
+/* Login Popup */
+
+.popup-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.popup-box {
+    background: #fff;
+    width: 350px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.popup-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.popup-btn {
+    width: 100%;
+    margin-top: 15px;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Admin Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.admin-user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-user-info span {
+    color: #2e7d32;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.admin-heading {
+    font-size: 28px;
+    margin: 0;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+
+/* NAV BUTTONS */
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.main-btn {
+    background: #17a2b8;
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.main-btn:hover {
+    background: #138496;
+}
+
+
+/* TABLES */
+
+.table-box {
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
+}
+
+.table-box table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-box th,
+.table-box td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+}
+
+.table-box th {
+    background: #f0f0f0;
+}
+
+.delete-btn {
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-btn {
+    margin-top: 30px;
+    padding: 10px 25px;
+    background: red;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+/* Loading Styles */
+.loading-container {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.loading-container p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Enhanced Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Stat Card Styles */
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #4CAF50;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card-icon {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 50%;
+}
+
+.stat-card-info {
+  flex: 1;
+  text-align: left;
+}
+
+.stat-card-info p {
+  margin: 0 0 0.5rem 0;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card-info span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  display: block;
+}
+
+/* Table Responsive */
+.table-responsive {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.table-responsive table {
+  min-width: 600px;
+}
+
+/* Enhanced Table Styles */
+.table-box h2 {
+  color: #2e7d32;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.table-box table th {
+  background: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem 0.75rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.table-box table td {
+  padding: 0.875rem 0.75rem;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.table-box table tr:hover {
+  background: #f8f9fa;
+}
+
+/* Enhanced Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.main-btn {
+  flex: 1;
+  min-width: 200px;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.main-btn:hover {
+  background: linear-gradient(135deg, #45a049, #388e3c);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.logout-btn {
+  background: linear-gradient(135deg, #f44336, #d32f2f) !important;
+  flex: none;
+  min-width: auto;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #d32f2f, #c62828) !important;
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #d32f2f, #c62828);
+  transform: scale(1.05);
+}
+
+/* Empty State */
+.table-box p {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 1rem;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-buttons {
+    flex-direction: column;
+  }
+  
+  .main-btn {
+    min-width: auto;
+  }
+  
+  .table-box {
+    padding: 1rem;
+  }
+  
+  .popup-box {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-responsive table {
+    font-size: 0.85rem;
+  }
+  
+  .table-responsive table th,
+  .table-responsive table td {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .delete-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}

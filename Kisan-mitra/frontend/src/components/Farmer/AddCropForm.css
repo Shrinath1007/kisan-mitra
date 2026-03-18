@@ -1,0 +1,32 @@
+/* src/components/Farmer/AddCropForm.css */
+.add-crop-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-crop-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-crop-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.add-crop-form input,
+.add-crop-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.add-crop-form .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
